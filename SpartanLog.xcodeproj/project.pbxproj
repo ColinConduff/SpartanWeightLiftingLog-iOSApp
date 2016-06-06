@@ -8,12 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458331D053ABE00F28C27 /* AppDelegate.swift */; };
-		C3E458361D053ABE00F28C27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458351D053ABE00F28C27 /* ViewController.swift */; };
 		C3E458391D053ABE00F28C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E458371D053ABE00F28C27 /* Main.storyboard */; };
 		C3E4583B1D053ABE00F28C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E4583A1D053ABE00F28C27 /* Assets.xcassets */; };
 		C3E4583E1D053ABE00F28C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E4583C1D053ABE00F28C27 /* LaunchScreen.storyboard */; };
 		C3E458491D053ABE00F28C27 /* SpartanLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458481D053ABE00F28C27 /* SpartanLogTests.swift */; };
 		C3E458541D053ABE00F28C27 /* SpartanLogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458531D053ABE00F28C27 /* SpartanLogUITests.swift */; };
+		C3E4586A1D053DD000F28C27 /* ExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458691D053DD000F28C27 /* ExerciseTableViewController.swift */; };
+		C3E4586C1D053DE300F28C27 /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4586B1D053DE300F28C27 /* ExerciseTableViewCell.swift */; };
+		C3E4586E1D053DF800F28C27 /* ExerciseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4586D1D053DF800F28C27 /* ExerciseDetailViewController.swift */; };
+		C3E458701D053E0C00F28C27 /* ExerciseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4586F1D053E0C00F28C27 /* ExerciseService.swift */; };
+		C3E458721D053E1500F28C27 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458711D053E1500F28C27 /* Exercise.swift */; };
+		C3E458741D053E2900F28C27 /* SpartanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458731D053E2900F28C27 /* SpartanAPI.swift */; };
+		C3E458761D053E4F00F28C27 /* WorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458751D053E4F00F28C27 /* WorkoutTableViewController.swift */; };
+		C3E458781D053E5D00F28C27 /* WorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458771D053E5D00F28C27 /* WorkoutTableViewCell.swift */; };
+		C3E4587A1D053E6A00F28C27 /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458791D053E6A00F28C27 /* WorkoutDetailViewController.swift */; };
+		C3E4587C1D053E7A00F28C27 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4587B1D053E7A00F28C27 /* Workout.swift */; };
+		C3E4587E1D053E8700F28C27 /* WorkoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4587D1D053E8700F28C27 /* WorkoutService.swift */; };
+		C3E458801D053E9700F28C27 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4587F1D053E9700F28C27 /* GroupTableViewController.swift */; };
+		C3E458821D053EA400F28C27 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458811D053EA400F28C27 /* GroupTableViewCell.swift */; };
+		C3E458841D053EBB00F28C27 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458831D053EBB00F28C27 /* GroupDetailViewController.swift */; };
+		C3E458861D053ECE00F28C27 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458851D053ECE00F28C27 /* Group.swift */; };
+		C3E458881D053ED600F28C27 /* GroupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458871D053ED600F28C27 /* GroupService.swift */; };
+		C3E4588A1D053EF000F28C27 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458891D053EF000F28C27 /* LoginViewController.swift */; };
+		C3E4588C1D053EFB00F28C27 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4588B1D053EFB00F28C27 /* LoginService.swift */; };
+		C3E4588E1D053F0C00F28C27 /* SetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4588D1D053F0C00F28C27 /* SetDetailViewController.swift */; };
+		C3E458901D053F1A00F28C27 /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4588F1D053F1A00F28C27 /* SetTableViewController.swift */; };
+		C3E458921D053F2700F28C27 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458911D053F2700F28C27 /* SetTableViewCell.swift */; };
+		C3E458941D053F3400F28C27 /* SetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458931D053F3400F28C27 /* SetService.swift */; };
+		C3E458961D053F3B00F28C27 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458951D053F3B00F28C27 /* Set.swift */; };
+		C3E458981D053F6000F28C27 /* SelectGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458971D053F6000F28C27 /* SelectGroupTableViewController.swift */; };
+		C3E4589A1D053F7000F28C27 /* SelectWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458991D053F7000F28C27 /* SelectWorkoutTableViewController.swift */; };
+		C3E4589C1D053F8100F28C27 /* SelectExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4589B1D053F8100F28C27 /* SelectExerciseTableViewController.swift */; };
+		C3E4589E1D0552D600F28C27 /* PerformUIUpdatesOnMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4589D1D0552D600F28C27 /* PerformUIUpdatesOnMain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +62,6 @@
 /* Begin PBXFileReference section */
 		C3E458301D053ABE00F28C27 /* SpartanLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpartanLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E458331D053ABE00F28C27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C3E458351D053ABE00F28C27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C3E458381D053ABE00F28C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3E4583A1D053ABE00F28C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3E4583D1D053ABE00F28C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +72,33 @@
 		C3E4584F1D053ABE00F28C27 /* SpartanLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E458531D053ABE00F28C27 /* SpartanLogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanLogUITests.swift; sourceTree = "<group>"; };
 		C3E458551D053ABE00F28C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E458691D053DD000F28C27 /* ExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewController.swift; sourceTree = "<group>"; };
+		C3E4586B1D053DE300F28C27 /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		C3E4586D1D053DF800F28C27 /* ExerciseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseDetailViewController.swift; sourceTree = "<group>"; };
+		C3E4586F1D053E0C00F28C27 /* ExerciseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseService.swift; sourceTree = "<group>"; };
+		C3E458711D053E1500F28C27 /* Exercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		C3E458731D053E2900F28C27 /* SpartanAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpartanAPI.swift; sourceTree = "<group>"; };
+		C3E458751D053E4F00F28C27 /* WorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewController.swift; sourceTree = "<group>"; };
+		C3E458771D053E5D00F28C27 /* WorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		C3E458791D053E6A00F28C27 /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
+		C3E4587B1D053E7A00F28C27 /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		C3E4587D1D053E8700F28C27 /* WorkoutService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutService.swift; sourceTree = "<group>"; };
+		C3E4587F1D053E9700F28C27 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		C3E458811D053EA400F28C27 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		C3E458831D053EBB00F28C27 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		C3E458851D053ECE00F28C27 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		C3E458871D053ED600F28C27 /* GroupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupService.swift; sourceTree = "<group>"; };
+		C3E458891D053EF000F28C27 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C3E4588B1D053EFB00F28C27 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		C3E4588D1D053F0C00F28C27 /* SetDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDetailViewController.swift; sourceTree = "<group>"; };
+		C3E4588F1D053F1A00F28C27 /* SetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
+		C3E458911D053F2700F28C27 /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
+		C3E458931D053F3400F28C27 /* SetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetService.swift; sourceTree = "<group>"; };
+		C3E458951D053F3B00F28C27 /* Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
+		C3E458971D053F6000F28C27 /* SelectGroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGroupTableViewController.swift; sourceTree = "<group>"; };
+		C3E458991D053F7000F28C27 /* SelectWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWorkoutTableViewController.swift; sourceTree = "<group>"; };
+		C3E4589B1D053F8100F28C27 /* SelectExerciseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseTableViewController.swift; sourceTree = "<group>"; };
+		C3E4589D1D0552D600F28C27 /* PerformUIUpdatesOnMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformUIUpdatesOnMain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +149,18 @@
 		C3E458321D053ABE00F28C27 /* SpartanLog */ = {
 			isa = PBXGroup;
 			children = (
+				C3E458651D053D6E00F28C27 /* Log */,
+				C3E458641D053D6800F28C27 /* Login */,
+				C3E458631D053D6100F28C27 /* Group */,
+				C3E458621D053D5B00F28C27 /* Workout */,
+				C3E458611D053D5300F28C27 /* Exercise */,
 				C3E458331D053ABE00F28C27 /* AppDelegate.swift */,
-				C3E458351D053ABE00F28C27 /* ViewController.swift */,
+				C3E458731D053E2900F28C27 /* SpartanAPI.swift */,
 				C3E458371D053ABE00F28C27 /* Main.storyboard */,
 				C3E4583A1D053ABE00F28C27 /* Assets.xcassets */,
 				C3E4583C1D053ABE00F28C27 /* LaunchScreen.storyboard */,
 				C3E4583F1D053ABE00F28C27 /* Info.plist */,
+				C3E4589D1D0552D600F28C27 /* PerformUIUpdatesOnMain.swift */,
 			);
 			path = SpartanLog;
 			sourceTree = "<group>";
@@ -123,6 +181,74 @@
 				C3E458551D053ABE00F28C27 /* Info.plist */,
 			);
 			path = SpartanLogUITests;
+			sourceTree = "<group>";
+		};
+		C3E458611D053D5300F28C27 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458691D053DD000F28C27 /* ExerciseTableViewController.swift */,
+				C3E4586B1D053DE300F28C27 /* ExerciseTableViewCell.swift */,
+				C3E4586D1D053DF800F28C27 /* ExerciseDetailViewController.swift */,
+				C3E4586F1D053E0C00F28C27 /* ExerciseService.swift */,
+				C3E458711D053E1500F28C27 /* Exercise.swift */,
+			);
+			name = Exercise;
+			sourceTree = "<group>";
+		};
+		C3E458621D053D5B00F28C27 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458751D053E4F00F28C27 /* WorkoutTableViewController.swift */,
+				C3E458771D053E5D00F28C27 /* WorkoutTableViewCell.swift */,
+				C3E458791D053E6A00F28C27 /* WorkoutDetailViewController.swift */,
+				C3E4587B1D053E7A00F28C27 /* Workout.swift */,
+				C3E4587D1D053E8700F28C27 /* WorkoutService.swift */,
+			);
+			name = Workout;
+			sourceTree = "<group>";
+		};
+		C3E458631D053D6100F28C27 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4587F1D053E9700F28C27 /* GroupTableViewController.swift */,
+				C3E458811D053EA400F28C27 /* GroupTableViewCell.swift */,
+				C3E458831D053EBB00F28C27 /* GroupDetailViewController.swift */,
+				C3E458851D053ECE00F28C27 /* Group.swift */,
+				C3E458871D053ED600F28C27 /* GroupService.swift */,
+			);
+			name = Group;
+			sourceTree = "<group>";
+		};
+		C3E458641D053D6800F28C27 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458891D053EF000F28C27 /* LoginViewController.swift */,
+				C3E4588B1D053EFB00F28C27 /* LoginService.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		C3E458651D053D6E00F28C27 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458661D053D7C00F28C27 /* Set */,
+				C3E458971D053F6000F28C27 /* SelectGroupTableViewController.swift */,
+				C3E458991D053F7000F28C27 /* SelectWorkoutTableViewController.swift */,
+				C3E4589B1D053F8100F28C27 /* SelectExerciseTableViewController.swift */,
+			);
+			name = Log;
+			sourceTree = "<group>";
+		};
+		C3E458661D053D7C00F28C27 /* Set */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4588D1D053F0C00F28C27 /* SetDetailViewController.swift */,
+				C3E4588F1D053F1A00F28C27 /* SetTableViewController.swift */,
+				C3E458911D053F2700F28C27 /* SetTableViewCell.swift */,
+				C3E458931D053F3400F28C27 /* SetService.swift */,
+				C3E458951D053F3B00F28C27 /* Set.swift */,
+			);
+			name = Set;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +382,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E458361D053ABE00F28C27 /* ViewController.swift in Sources */,
+				C3E458921D053F2700F28C27 /* SetTableViewCell.swift in Sources */,
+				C3E4588C1D053EFB00F28C27 /* LoginService.swift in Sources */,
+				C3E4588A1D053EF000F28C27 /* LoginViewController.swift in Sources */,
+				C3E458701D053E0C00F28C27 /* ExerciseService.swift in Sources */,
+				C3E4586C1D053DE300F28C27 /* ExerciseTableViewCell.swift in Sources */,
+				C3E458981D053F6000F28C27 /* SelectGroupTableViewController.swift in Sources */,
+				C3E4587A1D053E6A00F28C27 /* WorkoutDetailViewController.swift in Sources */,
+				C3E458861D053ECE00F28C27 /* Group.swift in Sources */,
+				C3E4587E1D053E8700F28C27 /* WorkoutService.swift in Sources */,
+				C3E458961D053F3B00F28C27 /* Set.swift in Sources */,
+				C3E458761D053E4F00F28C27 /* WorkoutTableViewController.swift in Sources */,
 				C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */,
+				C3E4586E1D053DF800F28C27 /* ExerciseDetailViewController.swift in Sources */,
+				C3E458821D053EA400F28C27 /* GroupTableViewCell.swift in Sources */,
+				C3E4587C1D053E7A00F28C27 /* Workout.swift in Sources */,
+				C3E458841D053EBB00F28C27 /* GroupDetailViewController.swift in Sources */,
+				C3E458721D053E1500F28C27 /* Exercise.swift in Sources */,
+				C3E458741D053E2900F28C27 /* SpartanAPI.swift in Sources */,
+				C3E458781D053E5D00F28C27 /* WorkoutTableViewCell.swift in Sources */,
+				C3E4589C1D053F8100F28C27 /* SelectExerciseTableViewController.swift in Sources */,
+				C3E458881D053ED600F28C27 /* GroupService.swift in Sources */,
+				C3E458901D053F1A00F28C27 /* SetTableViewController.swift in Sources */,
+				C3E458801D053E9700F28C27 /* GroupTableViewController.swift in Sources */,
+				C3E4588E1D053F0C00F28C27 /* SetDetailViewController.swift in Sources */,
+				C3E4589E1D0552D600F28C27 /* PerformUIUpdatesOnMain.swift in Sources */,
+				C3E4589A1D053F7000F28C27 /* SelectWorkoutTableViewController.swift in Sources */,
+				C3E458941D053F3400F28C27 /* SetService.swift in Sources */,
+				C3E4586A1D053DD000F28C27 /* ExerciseTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
