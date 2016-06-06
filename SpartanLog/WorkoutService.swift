@@ -189,4 +189,64 @@ extension SpartanAPI {
             }
         }
     }
+    
+    func attachExercise(workout: Workout, exercise: Exercise, completionHandler: (result: Workout?, error: NSError?) -> Void)  {
+        print("\nattachExercise")
+        
+        let path = "workouts/\(workout.id!)/attach"
+        
+        let jsonBodyDictionary = [
+            "exerciseID": exercise.id!
+        ]
+        
+        var jsonBody: NSData?
+        do {
+            jsonBody = try NSJSONSerialization.dataWithJSONObject(jsonBodyDictionary, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        /* 2. Make the request */
+        taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandler(result: nil, error: error)
+                
+            } else {
+                completionHandler(result: nil, error: nil)
+                
+            }
+        }
+    }
+    
+    func detachExercise(workout: Workout, exercise: Exercise, completionHandler: (result: Workout?, error: NSError?) -> Void)  {
+        print("\ndetachExercise")
+        
+        let path = "workouts/\(workout.id!)/detach"
+        
+        let jsonBodyDictionary = [
+            "exerciseID": exercise.id!
+        ]
+        
+        var jsonBody: NSData?
+        do {
+            jsonBody = try NSJSONSerialization.dataWithJSONObject(jsonBodyDictionary, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        /* 2. Make the request */
+        taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandler(result: nil, error: error)
+                
+            } else {
+                completionHandler(result: nil, error: nil)
+                
+            }
+        }
+    }
 }

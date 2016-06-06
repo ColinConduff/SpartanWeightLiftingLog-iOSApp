@@ -86,5 +86,16 @@ class WorkoutDetailViewController: UIViewController, UITextFieldDelegate, UINavi
             // Set the workout to be passed to workoutListTableViewController after the unwind segue.
             workout = Workout(id: id, name: name)
         }
+        
+        if segue.identifier == "ShowAttachExerciseTable" {
+            var destinationvc = segue.destinationViewController
+            if let navcon = destinationvc as? UINavigationController {
+                destinationvc = navcon.visibleViewController ?? destinationvc
+            }
+            
+            if let attachExerciseTableViewController = destinationvc as? AttachExerciseTableViewController {
+                attachExerciseTableViewController.workout = workout
+            }
+        }
     }
 }

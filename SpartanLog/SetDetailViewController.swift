@@ -99,6 +99,36 @@ class SetDetailViewController: UIViewController, UITextFieldDelegate, UINavigati
         }
     }
     
+    // MARK: Update Reps Action
+    
+    @IBAction func updateReptitionsTextField(sender: UIButton) {
+        repetitionsTextField.text = sender.currentTitle
+        checkValidSet()
+    }
+    
+    // MARK: Update Weight Action
+    
+    var firstWeightButtonPress = true
+    
+    @IBAction func updateWeightTextField(sender: UIButton) {
+        
+        if firstWeightButtonPress{
+            weightTextField.text = sender.currentTitle
+            firstWeightButtonPress = false
+            
+            checkValidSet()
+        
+        } else {
+            let currentWeight = Double(weightTextField.text!)
+            let weightToAdd = Double(sender.currentTitle!)
+            
+            let newWeight = currentWeight! + weightToAdd!
+            weightTextField.text = String(newWeight)
+            
+            checkValidSet()
+        }
+    }
+    
     // MARK: Delete 
     
     
