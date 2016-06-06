@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     
     // MARK: Properties
     
-    @IBOutlet weak var debugTextLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
     var session: NSURLSession!
@@ -27,7 +26,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        debugTextLabel.text = ""
     }
     
     // MARK: Actions
@@ -37,22 +35,13 @@ class LoginViewController: UIViewController {
             performUIUpdatesOnMain {
                 if success {
                     self.completeLogin()
-                } else {
-                    self.displayError(errorString)
                 }
             }
         }
     }
     
     private func completeLogin() {
-        debugTextLabel.text = ""
         let controller = storyboard!.instantiateViewControllerWithIdentifier("AfterLoginTabBarController") as! UITabBarController
         presentViewController(controller, animated: true, completion: nil)
-    }
-    
-    private func displayError(errorString: String?) {
-        if let errorString = errorString {
-            debugTextLabel.text = errorString
-        }
     }
 }

@@ -10,6 +10,8 @@
 		C34C84271D05785400AC0042 /* SelectGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C84261D05785400AC0042 /* SelectGroupTableViewCell.swift */; };
 		C34C84291D05786200AC0042 /* SelectWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C84281D05786200AC0042 /* SelectWorkoutTableViewCell.swift */; };
 		C34C842B1D05787600AC0042 /* SelectExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C842A1D05787600AC0042 /* SelectExerciseTableViewCell.swift */; };
+		C38FD28F1D05A63600272E5E /* AttachWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FD28E1D05A63600272E5E /* AttachWorkoutTableViewController.swift */; };
+		C38FD2911D05A64A00272E5E /* AttachWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FD2901D05A64A00272E5E /* AttachWorkoutTableViewCell.swift */; };
 		C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458331D053ABE00F28C27 /* AppDelegate.swift */; };
 		C3E458391D053ABE00F28C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E458371D053ABE00F28C27 /* Main.storyboard */; };
 		C3E4583B1D053ABE00F28C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E4583A1D053ABE00F28C27 /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		C34C84261D05785400AC0042 /* SelectGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGroupTableViewCell.swift; sourceTree = "<group>"; };
 		C34C84281D05786200AC0042 /* SelectWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		C34C842A1D05787600AC0042 /* SelectExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		C38FD28E1D05A63600272E5E /* AttachWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachWorkoutTableViewController.swift; sourceTree = "<group>"; };
+		C38FD2901D05A64A00272E5E /* AttachWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachWorkoutTableViewCell.swift; sourceTree = "<group>"; };
 		C3E458301D053ABE00F28C27 /* SpartanLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpartanLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E458331D053ABE00F28C27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3E458381D053ABE00F28C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C38FD28D1D05A5DF00272E5E /* WorkoutAttachment */ = {
+			isa = PBXGroup;
+			children = (
+				C38FD28E1D05A63600272E5E /* AttachWorkoutTableViewController.swift */,
+				C38FD2901D05A64A00272E5E /* AttachWorkoutTableViewCell.swift */,
+			);
+			name = WorkoutAttachment;
+			sourceTree = "<group>";
+		};
 		C3E458271D053ABE00F28C27 = {
 			isa = PBXGroup;
 			children = (
@@ -216,9 +229,10 @@
 		C3E458631D053D6100F28C27 /* Group */ = {
 			isa = PBXGroup;
 			children = (
+				C38FD28D1D05A5DF00272E5E /* WorkoutAttachment */,
+				C3E458831D053EBB00F28C27 /* GroupDetailViewController.swift */,
 				C3E4587F1D053E9700F28C27 /* GroupTableViewController.swift */,
 				C3E458811D053EA400F28C27 /* GroupTableViewCell.swift */,
-				C3E458831D053EBB00F28C27 /* GroupDetailViewController.swift */,
 				C3E458851D053ECE00F28C27 /* Group.swift */,
 				C3E458871D053ED600F28C27 /* GroupService.swift */,
 			);
@@ -411,10 +425,12 @@
 				C34C84291D05786200AC0042 /* SelectWorkoutTableViewCell.swift in Sources */,
 				C3E458841D053EBB00F28C27 /* GroupDetailViewController.swift in Sources */,
 				C3E458721D053E1500F28C27 /* Exercise.swift in Sources */,
+				C38FD2911D05A64A00272E5E /* AttachWorkoutTableViewCell.swift in Sources */,
 				C3E458741D053E2900F28C27 /* SpartanAPI.swift in Sources */,
 				C3E458781D053E5D00F28C27 /* WorkoutTableViewCell.swift in Sources */,
 				C3E4589C1D053F8100F28C27 /* SelectExerciseTableViewController.swift in Sources */,
 				C3E458881D053ED600F28C27 /* GroupService.swift in Sources */,
+				C38FD28F1D05A63600272E5E /* AttachWorkoutTableViewController.swift in Sources */,
 				C3E458901D053F1A00F28C27 /* SetTableViewController.swift in Sources */,
 				C3E458801D053E9700F28C27 /* GroupTableViewController.swift in Sources */,
 				C3E4588E1D053F0C00F28C27 /* SetDetailViewController.swift in Sources */,

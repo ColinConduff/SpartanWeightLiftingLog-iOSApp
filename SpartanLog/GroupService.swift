@@ -188,4 +188,65 @@ extension SpartanAPI {
             }
         }
     }
+    
+    func attachWorkout(group: Group, workout: Workout, completionHandler: (result: Group?, error: NSError?) -> Void)  {
+        print("\nattachWorkout")
+        
+        let path = "groups/\(group.id!)/attach"
+        
+        let jsonBodyDictionary = [
+            "workoutID": workout.id!
+        ]
+        
+        var jsonBody: NSData?
+        do {
+            jsonBody = try NSJSONSerialization.dataWithJSONObject(jsonBodyDictionary, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        /* 2. Make the request */
+        taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandler(result: nil, error: error)
+                
+            } else {
+                completionHandler(result: nil, error: nil)
+                    
+            }
+        }
+    }
+    
+    func detachWorkout(group: Group, workout: Workout, completionHandler: (result: Group?, error: NSError?) -> Void)  {
+        print("\ndetachWorkout")
+        
+        let path = "groups/\(group.id!)/detach"
+        
+        let jsonBodyDictionary = [
+            "workoutID": workout.id!
+        ]
+        
+        var jsonBody: NSData?
+        do {
+            jsonBody = try NSJSONSerialization.dataWithJSONObject(jsonBodyDictionary, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        /* 2. Make the request */
+        taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
+            
+            /* 3. Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandler(result: nil, error: error)
+                
+            } else {
+                completionHandler(result: nil, error: nil)
+                
+            }
+        }
+    }
+
 }

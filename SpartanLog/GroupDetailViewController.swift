@@ -87,5 +87,16 @@ class GroupDetailViewController: UIViewController, UITextFieldDelegate, UINaviga
             // Set the group to be passed to groupListTableViewController after the unwind segue.
             group = Group(id: id, name: name)
         }
+    
+        if segue.identifier == "ShowAttachWorkoutTable" {
+            var destinationvc = segue.destinationViewController
+            if let navcon = destinationvc as? UINavigationController {
+                destinationvc = navcon.visibleViewController ?? destinationvc
+            }
+            
+            if let attachWorkoutTableViewController = destinationvc as? AttachWorkoutTableViewController {
+                attachWorkoutTableViewController.group = group
+            }
+        }
     }
 }
