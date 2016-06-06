@@ -14,6 +14,8 @@ class ExerciseTableViewController: UITableViewController {
     
     var exercises = [Exercise]()
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,9 @@ class ExerciseTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        activityIndicator.alpha = 1.0
+        activityIndicator.startAnimating()
         
         getExercises()
     }
@@ -62,20 +67,16 @@ class ExerciseTableViewController: UITableViewController {
         return true
     }
     
-    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            exercises.removeAtIndex(indexPath.row)
-            //saveExercises()
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            deleteExercise(indexPath)
         }
     }
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowExerciseDetail" {
             let exerciseDetailViewController = segue.destinationViewController as! ExerciseDetailViewController
@@ -89,22 +90,15 @@ class ExerciseTableViewController: UITableViewController {
         }
     }
     
-    
     @IBAction func unwindToExerciseList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? ExerciseDetailViewController, exercise = sourceViewController.exercise {
+            
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                // Update an existing exercise.
-                exercises[selectedIndexPath.row] = exercise
-                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                updateExercise(exercise, indexPath: selectedIndexPath)
             
             } else {
-                // Add a new exercise.
-                let newIndexPath = NSIndexPath(forRow: exercises.count, inSection: 0)
-                exercises.append(exercise)
-                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                createExercise(exercise)
             }
-            // Save the exercises.
-            //saveExercises()
         }
     }
     
@@ -112,15 +106,76 @@ class ExerciseTableViewController: UITableViewController {
     
     func getExercises() {
         SpartanAPI.sharedInstance().getExercises() { (exercises, error) in
+            
             if let exercises = exercises {
                 performUIUpdatesOnMain {
-                    
                     self.exercises = exercises
                     self.tableView.reloadData()
                 }
+            
             } else {
                 print(error)
             }
+            
+            self.activityIndicator.alpha = 0.0
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func createExercise(exercise: Exercise) {
+        SpartanAPI.sharedInstance().createExercise(exercise) { (exercise, error) in
+            
+            if let exercise = exercise {
+                performUIUpdatesOnMain {
+                    let newIndexPath = NSIndexPath(forRow: self.exercises.count, inSection: 0)
+                    self.exercises.append(exercise)
+                    self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                }
+                
+            } else {
+                print(error)
+            }
+            
+            self.activityIndicator.alpha = 0.0
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func updateExercise(exercise: Exercise, indexPath: NSIndexPath) {
+        SpartanAPI.sharedInstance().updateExercise(exercise) { (exercise, error) in
+            
+            if let exercise = exercise {
+                performUIUpdatesOnMain {
+                    self.exercises[indexPath.row] = exercise
+                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                }
+                
+            } else {
+                print(error)
+            }
+            
+            self.activityIndicator.alpha = 0.0
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func deleteExercise(indexPath: NSIndexPath) {
+        let exercise = exercises[indexPath.row]
+        
+        SpartanAPI.sharedInstance().deleteExercise(exercise) {
+            (exercises, error) in
+            if let error = error {
+                print(error)
+            
+            } else {
+                performUIUpdatesOnMain {
+                    self.exercises.removeAtIndex(indexPath.row)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+            }
+            
+            self.activityIndicator.alpha = 0.0
+            self.activityIndicator.stopAnimating()
         }
     }
 }

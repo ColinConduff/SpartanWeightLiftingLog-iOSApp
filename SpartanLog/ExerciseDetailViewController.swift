@@ -88,6 +88,11 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
         return bodyRegions[row]
     }
     
+    // Catpure the picker view selection
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        checkValidExerciseName()
+    }
+    
     // MARK: Navigation
     
     @IBAction func cancel(sender: UIBarButtonItem) {

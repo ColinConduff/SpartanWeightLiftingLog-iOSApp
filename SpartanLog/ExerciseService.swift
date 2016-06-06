@@ -48,7 +48,7 @@ extension SpartanAPI {
     func getExercise(exercise: Exercise, completionHandler: (result: Exercise?, error: NSError?) -> Void) {
         print("\ngetExercise")
         
-        let path = "exercises/\(exercise.id)"
+        let path = "exercises/\(exercise.id!)"
         
         /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
@@ -124,7 +124,7 @@ extension SpartanAPI {
     func updateExercise(exercise: Exercise, completionHandler: (result: Exercise?, error: NSError?) -> Void)  {
         print("\nupdateExercise")
         
-        let path = "exercises/\(exercise.id)"
+        let path = "exercises/\(exercise.id!)"
         
         let jsonBodyDictionary = [
             "name": exercise.name,
@@ -168,7 +168,7 @@ extension SpartanAPI {
     func deleteExercise(exercise: Exercise, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ndeleteExercise")
         
-        let path = "exercises/\(exercise.id)"
+        let path = "exercises/\(exercise.id!)"
         
         taskForDELETEMethod(path) { (results, error) in
             

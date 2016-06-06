@@ -211,7 +211,7 @@ class SpartanAPI : NSObject {
             }
             
             /* 5/6. Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
+            self.convertDataWithCompletionHandler(nil, completionHandlerForConvertData: completionHandlerForDELETE)
         }
         
         /* 7. Start the request */
@@ -223,17 +223,21 @@ class SpartanAPI : NSObject {
     // MARK: Helpers
     
     // given raw JSON, return a usable Foundation object
-    private func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
+    private func convertDataWithCompletionHandler(data: NSData?, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
-        var parsedResult: AnyObject!
-        do {
-            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-        } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+        if let data = data {
+            var parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            } catch {
+                let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+                completionHandlerForConvertData(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+            }
+            
+            completionHandlerForConvertData(result: parsedResult, error: nil)
+        } else {
+            completionHandlerForConvertData(result: nil, error: nil)
         }
-        
-        completionHandlerForConvertData(result: parsedResult, error: nil)
     }
     
     // create a URL from parameters
