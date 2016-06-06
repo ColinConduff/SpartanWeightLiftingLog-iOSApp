@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -723,20 +724,26 @@
                                     <constraint firstItem="MSM-WF-hOY" firstAttribute="top" secondItem="f0P-N0-mqS" secondAttribute="bottom" id="wPO-dp-miX"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVZ-gb-GpA">
+                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVZ-gb-GpA">
                                 <rect key="frame" x="20" y="518" width="560" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.29695092610000001" blue="0.27143549309999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendDelete:" destination="A5i-nE-TYB" eventType="touchUpInside" id="cT6-g3-FQQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ksm-hz-iM8" firstAttribute="top" secondItem="LVZ-gb-GpA" secondAttribute="bottom" constant="8" id="0zo-gs-94x"/>
                             <constraint firstItem="pJf-wD-orz" firstAttribute="leading" secondItem="P6L-7P-7aY" secondAttribute="leadingMargin" id="6Bm-fr-wQh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LVZ-gb-GpA" secondAttribute="trailing" id="6pg-bL-kew"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pJf-wD-orz" secondAttribute="trailing" id="H5j-KL-1b9"/>
                             <constraint firstItem="pJf-wD-orz" firstAttribute="top" secondItem="Cz6-q9-Vlg" secondAttribute="bottom" constant="20" id="M3J-N9-Q4u"/>
                             <constraint firstItem="pJf-wD-orz" firstAttribute="leading" secondItem="P6L-7P-7aY" secondAttribute="leadingMargin" id="bM5-jB-REx"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="LVZ-gb-GpA" secondAttribute="leading" id="oS1-sm-n3J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Set" id="9CW-9I-Qrq">
@@ -745,11 +752,19 @@
                                 <action selector="cancel:" destination="A5i-nE-TYB" id="UEK-tg-TYm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CC7-Ha-ufp">
-                            <connections>
-                                <segue destination="cAZ-mg-lhN" kind="unwind" unwindAction="unwindToSetList:" id="YxJ-KE-mtm"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="CC7-Ha-ufp">
+                                <connections>
+                                    <segue destination="cAZ-mg-lhN" kind="unwind" unwindAction="unwindToSetList:" id="YxJ-KE-mtm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="k9q-we-w1E">
+                                <color key="tintColor" red="1" green="0.29695092610000001" blue="0.27143549309999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="showDeleteButton:" destination="A5i-nE-TYB" id="NsP-k9-Yw5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="repetitionsTextField" destination="Xwu-ux-BV2" id="3Kk-Tn-6T7"/>

@@ -99,8 +99,24 @@ class SetDetailViewController: UIViewController, UITextFieldDelegate, UINavigati
         }
     }
     
-    func deleteSet(indexPath: NSIndexPath) {
-        SpartanAPI.sharedInstance().deleteSet(set!) {
+    // MARK: Delete 
+    
+    
+    @IBAction func showDeleteButton(sender: UIBarButtonItem) {
+        if updating {
+            let deleteButton = view.viewWithTag(1) as? UIButton
+            deleteButton?.hidden = false
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
+    @IBAction func sendDelete(sender: UIButton) {
+        deleteSet(set!)
+    }
+    
+    func deleteSet(set: Set) {
+        SpartanAPI.sharedInstance().deleteSet(set) {
             (sets, error) in
             if let error = error {
                 print(error)

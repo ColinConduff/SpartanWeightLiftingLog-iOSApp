@@ -20,7 +20,6 @@ class SetTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -112,6 +111,9 @@ class SetTableViewController: UITableViewController {
     func createSet(set: Set) {
         self.startActivityIndicator()
         
+        set.workoutID = self.workout?.id
+        set.exerciseID = self.exercise?.id
+        
         SpartanAPI.sharedInstance().createSet(set) { (set, error) in
             
             if let set = set {
@@ -131,6 +133,9 @@ class SetTableViewController: UITableViewController {
     
     func updateSet(set: Set, indexPath: NSIndexPath) {
         self.startActivityIndicator()
+        
+        set.workoutID = self.workout?.id
+        set.exerciseID = self.exercise?.id
         
         SpartanAPI.sharedInstance().updateSet(set) { (set, error) in
             

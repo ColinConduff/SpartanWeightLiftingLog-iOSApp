@@ -60,14 +60,17 @@ extension SpartanAPI {
                 if let results = results["workout"] as? [String:AnyObject] {
                     
                     var exercises = [Exercise]()
-                    if let results = results["exercises"] as? [String:AnyObject] {
-                        let id = results["id"] as? Int
-                        let name = results["name"] as? String
-                        let bodyRegion = results["bodyRegion"] as? String
-                        let createdAt = results["created_at"] as? String
-                        let updatedAt = results["updated_at"] as? String
+                    if let results = results["exercises"] as? [[String:AnyObject]] {
                         
-                        exercises.append(Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        for result in results {
+                            let id = result["id"] as? Int
+                            let name = result["name"] as? String
+                            let bodyRegion = result["bodyRegion"] as? String
+                            let createdAt = result["created_at"] as? String
+                            let updatedAt = result["updated_at"] as? String
+                            
+                            exercises.append(Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        }
                     }
                     
                     let id = results["id"] as? Int

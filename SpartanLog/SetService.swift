@@ -36,7 +36,7 @@ extension SpartanAPI {
                         let workoutID = result["workout_id"] as? Int
                         let exerciseID = result["exercise_id"] as? Int
                         let repetitions = result["repetitions"] as? Int
-                        let weight = result["weight"] as? Int
+                        let weight = result["weight"] as? Double
                         let createdAt = result["created_at"] as? String
                         let updatedAt = result["updated_at"] as? String
                         
@@ -81,7 +81,7 @@ extension SpartanAPI {
                     let workoutID = results["workout_id"] as? Int
                     let exerciseID = results["exercise_id"] as? Int
                     let repetitions = results["repetitions"] as? Int
-                    let weight = results["weight"] as? Int
+                    let weight = results["weight"] as? Double
                     let createdAt = results["created_at"] as? String
                     let updatedAt = results["updated_at"] as? String
                     
@@ -102,6 +102,8 @@ extension SpartanAPI {
         let path = "sets"
         
         let jsonBodyDictionary = [
+            "workout_id": set.workoutID!,
+            "exercise_id": set.exerciseID!,
             "repetitions": set.repetitions,
             "weight": set.weight
         ]
@@ -127,7 +129,7 @@ extension SpartanAPI {
                     let workoutID = results["workout_id"] as? Int
                     let exerciseID = results["exercise_id"] as? Int
                     let repetitions = results["repetitions"] as? Int
-                    let weight = results["weight"] as? Int
+                    let weight = results["weight"] as? Double
                     let createdAt = results["created_at"] as? String
                     let updatedAt = results["updated_at"] as? String
                     
@@ -148,6 +150,8 @@ extension SpartanAPI {
         let path = "sets/\(set.id!)"
         
         let jsonBodyDictionary = [
+            "workout_id": set.workoutID!,
+            "exercise_id": set.exerciseID!,
             "repetitions": set.repetitions,
             "weight": set.weight
         ]
@@ -173,7 +177,7 @@ extension SpartanAPI {
                     let workoutID = results["workout_id"] as? Int
                     let exerciseID = results["exercise_id"] as? Int
                     let repetitions = results["repetitions"] as? Int
-                    let weight = results["weight"] as? Int
+                    let weight = results["weight"] as? Double
                     let createdAt = results["created_at"] as? String
                     let updatedAt = results["updated_at"] as? String
                     
