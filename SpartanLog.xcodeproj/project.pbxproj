@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458331D053ABE00F28C27 /* AppDelegate.swift */; };
+		C3E458361D053ABE00F28C27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458351D053ABE00F28C27 /* ViewController.swift */; };
+		C3E458391D053ABE00F28C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E458371D053ABE00F28C27 /* Main.storyboard */; };
+		C3E4583B1D053ABE00F28C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E4583A1D053ABE00F28C27 /* Assets.xcassets */; };
+		C3E4583E1D053ABE00F28C27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E4583C1D053ABE00F28C27 /* LaunchScreen.storyboard */; };
+		C3E458491D053ABE00F28C27 /* SpartanLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458481D053ABE00F28C27 /* SpartanLogTests.swift */; };
+		C3E458541D053ABE00F28C27 /* SpartanLogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458531D053ABE00F28C27 /* SpartanLogUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C3E458451D053ABE00F28C27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3E458281D053ABE00F28C27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3E4582F1D053ABE00F28C27;
+			remoteInfo = SpartanLog;
+		};
+		C3E458501D053ABE00F28C27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3E458281D053ABE00F28C27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3E4582F1D053ABE00F28C27;
+			remoteInfo = SpartanLog;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C3E458301D053ABE00F28C27 /* SpartanLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpartanLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E458331D053ABE00F28C27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C3E458351D053ABE00F28C27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3E458381D053ABE00F28C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C3E4583A1D053ABE00F28C27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3E4583D1D053ABE00F28C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C3E4583F1D053ABE00F28C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E458441D053ABE00F28C27 /* SpartanLogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanLogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E458481D053ABE00F28C27 /* SpartanLogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanLogTests.swift; sourceTree = "<group>"; };
+		C3E4584A1D053ABE00F28C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E4584F1D053ABE00F28C27 /* SpartanLogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpartanLogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3E458531D053ABE00F28C27 /* SpartanLogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpartanLogUITests.swift; sourceTree = "<group>"; };
+		C3E458551D053ABE00F28C27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C3E4582D1D053ABE00F28C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E458411D053ABE00F28C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E4584C1D053ABE00F28C27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C3E458271D053ABE00F28C27 = {
+			isa = PBXGroup;
+			children = (
+				C3E458321D053ABE00F28C27 /* SpartanLog */,
+				C3E458471D053ABE00F28C27 /* SpartanLogTests */,
+				C3E458521D053ABE00F28C27 /* SpartanLogUITests */,
+				C3E458311D053ABE00F28C27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C3E458311D053ABE00F28C27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458301D053ABE00F28C27 /* SpartanLog.app */,
+				C3E458441D053ABE00F28C27 /* SpartanLogTests.xctest */,
+				C3E4584F1D053ABE00F28C27 /* SpartanLogUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C3E458321D053ABE00F28C27 /* SpartanLog */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458331D053ABE00F28C27 /* AppDelegate.swift */,
+				C3E458351D053ABE00F28C27 /* ViewController.swift */,
+				C3E458371D053ABE00F28C27 /* Main.storyboard */,
+				C3E4583A1D053ABE00F28C27 /* Assets.xcassets */,
+				C3E4583C1D053ABE00F28C27 /* LaunchScreen.storyboard */,
+				C3E4583F1D053ABE00F28C27 /* Info.plist */,
+			);
+			path = SpartanLog;
+			sourceTree = "<group>";
+		};
+		C3E458471D053ABE00F28C27 /* SpartanLogTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458481D053ABE00F28C27 /* SpartanLogTests.swift */,
+				C3E4584A1D053ABE00F28C27 /* Info.plist */,
+			);
+			path = SpartanLogTests;
+			sourceTree = "<group>";
+		};
+		C3E458521D053ABE00F28C27 /* SpartanLogUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3E458531D053ABE00F28C27 /* SpartanLogUITests.swift */,
+				C3E458551D053ABE00F28C27 /* Info.plist */,
+			);
+			path = SpartanLogUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C3E4582F1D053ABE00F28C27 /* SpartanLog */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3E458581D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLog" */;
+			buildPhases = (
+				C3E4582C1D053ABE00F28C27 /* Sources */,
+				C3E4582D1D053ABE00F28C27 /* Frameworks */,
+				C3E4582E1D053ABE00F28C27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpartanLog;
+			productName = SpartanLog;
+			productReference = C3E458301D053ABE00F28C27 /* SpartanLog.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C3E458431D053ABE00F28C27 /* SpartanLogTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3E4585B1D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLogTests" */;
+			buildPhases = (
+				C3E458401D053ABE00F28C27 /* Sources */,
+				C3E458411D053ABE00F28C27 /* Frameworks */,
+				C3E458421D053ABE00F28C27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3E458461D053ABE00F28C27 /* PBXTargetDependency */,
+			);
+			name = SpartanLogTests;
+			productName = SpartanLogTests;
+			productReference = C3E458441D053ABE00F28C27 /* SpartanLogTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C3E4584E1D053ABE00F28C27 /* SpartanLogUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3E4585E1D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLogUITests" */;
+			buildPhases = (
+				C3E4584B1D053ABE00F28C27 /* Sources */,
+				C3E4584C1D053ABE00F28C27 /* Frameworks */,
+				C3E4584D1D053ABE00F28C27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3E458511D053ABE00F28C27 /* PBXTargetDependency */,
+			);
+			name = SpartanLogUITests;
+			productName = SpartanLogUITests;
+			productReference = C3E4584F1D053ABE00F28C27 /* SpartanLogUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C3E458281D053ABE00F28C27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Colin Conduff";
+				TargetAttributes = {
+					C3E4582F1D053ABE00F28C27 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					C3E458431D053ABE00F28C27 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = C3E4582F1D053ABE00F28C27;
+					};
+					C3E4584E1D053ABE00F28C27 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = C3E4582F1D053ABE00F28C27;
+					};
+				};
+			};
+			buildConfigurationList = C3E4582B1D053ABE00F28C27 /* Build configuration list for PBXProject "SpartanLog" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C3E458271D053ABE00F28C27;
+			productRefGroup = C3E458311D053ABE00F28C27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C3E4582F1D053ABE00F28C27 /* SpartanLog */,
+				C3E458431D053ABE00F28C27 /* SpartanLogTests */,
+				C3E4584E1D053ABE00F28C27 /* SpartanLogUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3E4582E1D053ABE00F28C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3E4583E1D053ABE00F28C27 /* LaunchScreen.storyboard in Resources */,
+				C3E4583B1D053ABE00F28C27 /* Assets.xcassets in Resources */,
+				C3E458391D053ABE00F28C27 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E458421D053ABE00F28C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E4584D1D053ABE00F28C27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C3E4582C1D053ABE00F28C27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3E458361D053ABE00F28C27 /* ViewController.swift in Sources */,
+				C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E458401D053ABE00F28C27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3E458491D053ABE00F28C27 /* SpartanLogTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3E4584B1D053ABE00F28C27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3E458541D053ABE00F28C27 /* SpartanLogUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3E458461D053ABE00F28C27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3E4582F1D053ABE00F28C27 /* SpartanLog */;
+			targetProxy = C3E458451D053ABE00F28C27 /* PBXContainerItemProxy */;
+		};
+		C3E458511D053ABE00F28C27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3E4582F1D053ABE00F28C27 /* SpartanLog */;
+			targetProxy = C3E458501D053ABE00F28C27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C3E458371D053ABE00F28C27 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3E458381D053ABE00F28C27 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C3E4583C1D053ABE00F28C27 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3E4583D1D053ABE00F28C27 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C3E458561D053ABE00F28C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C3E458571D053ABE00F28C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C3E458591D053ABE00F28C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpartanLog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.SpartanLog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C3E4585A1D053ABE00F28C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpartanLog/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.SpartanLog;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C3E4585C1D053ABE00F28C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpartanLogTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.SpartanLogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpartanLog.app/SpartanLog";
+			};
+			name = Debug;
+		};
+		C3E4585D1D053ABE00F28C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpartanLogTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.SpartanLogTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpartanLog.app/SpartanLog";
+			};
+			name = Release;
+		};
+		C3E4585F1D053ABE00F28C27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SpartanLogUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.SpartanLogUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SpartanLog;
+			};
+			name = Debug;
+		};
+		C3E458601D053ABE00F28C27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SpartanLogUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ColinConduff.SpartanLogUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SpartanLog;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C3E4582B1D053ABE00F28C27 /* Build configuration list for PBXProject "SpartanLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3E458561D053ABE00F28C27 /* Debug */,
+				C3E458571D053ABE00F28C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3E458581D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLog" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3E458591D053ABE00F28C27 /* Debug */,
+				C3E4585A1D053ABE00F28C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C3E4585B1D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLogTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3E4585C1D053ABE00F28C27 /* Debug */,
+				C3E4585D1D053ABE00F28C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C3E4585E1D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLogUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3E4585F1D053ABE00F28C27 /* Debug */,
+				C3E458601D053ABE00F28C27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C3E458281D053ABE00F28C27 /* Project object */;
+}
