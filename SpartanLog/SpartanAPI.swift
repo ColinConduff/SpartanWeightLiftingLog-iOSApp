@@ -204,12 +204,6 @@ class SpartanAPI : NSObject {
                 return
             }
             
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                sendError("No data was returned by the request!")
-                return
-            }
-            
             /* 5/6. Parse the data and use the data (happens in completion handler) */
             self.convertDataWithCompletionHandler(nil, completionHandlerForConvertData: completionHandlerForDELETE)
         }

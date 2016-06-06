@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C34C84271D05785400AC0042 /* SelectGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C84261D05785400AC0042 /* SelectGroupTableViewCell.swift */; };
+		C34C84291D05786200AC0042 /* SelectWorkoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C84281D05786200AC0042 /* SelectWorkoutTableViewCell.swift */; };
+		C34C842B1D05787600AC0042 /* SelectExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34C842A1D05787600AC0042 /* SelectExerciseTableViewCell.swift */; };
 		C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E458331D053ABE00F28C27 /* AppDelegate.swift */; };
 		C3E458391D053ABE00F28C27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E458371D053ABE00F28C27 /* Main.storyboard */; };
 		C3E4583B1D053ABE00F28C27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E4583A1D053ABE00F28C27 /* Assets.xcassets */; };
@@ -60,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C34C84261D05785400AC0042 /* SelectGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGroupTableViewCell.swift; sourceTree = "<group>"; };
+		C34C84281D05786200AC0042 /* SelectWorkoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectWorkoutTableViewCell.swift; sourceTree = "<group>"; };
+		C34C842A1D05787600AC0042 /* SelectExerciseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		C3E458301D053ABE00F28C27 /* SpartanLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpartanLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E458331D053ABE00F28C27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3E458381D053ABE00F28C27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -235,6 +241,9 @@
 				C3E458971D053F6000F28C27 /* SelectGroupTableViewController.swift */,
 				C3E458991D053F7000F28C27 /* SelectWorkoutTableViewController.swift */,
 				C3E4589B1D053F8100F28C27 /* SelectExerciseTableViewController.swift */,
+				C34C84261D05785400AC0042 /* SelectGroupTableViewCell.swift */,
+				C34C84281D05786200AC0042 /* SelectWorkoutTableViewCell.swift */,
+				C34C842A1D05787600AC0042 /* SelectExerciseTableViewCell.swift */,
 			);
 			name = Log;
 			sourceTree = "<group>";
@@ -391,12 +400,15 @@
 				C3E4587A1D053E6A00F28C27 /* WorkoutDetailViewController.swift in Sources */,
 				C3E458861D053ECE00F28C27 /* Group.swift in Sources */,
 				C3E4587E1D053E8700F28C27 /* WorkoutService.swift in Sources */,
+				C34C842B1D05787600AC0042 /* SelectExerciseTableViewCell.swift in Sources */,
 				C3E458961D053F3B00F28C27 /* Set.swift in Sources */,
 				C3E458761D053E4F00F28C27 /* WorkoutTableViewController.swift in Sources */,
 				C3E458341D053ABE00F28C27 /* AppDelegate.swift in Sources */,
 				C3E4586E1D053DF800F28C27 /* ExerciseDetailViewController.swift in Sources */,
 				C3E458821D053EA400F28C27 /* GroupTableViewCell.swift in Sources */,
+				C34C84271D05785400AC0042 /* SelectGroupTableViewCell.swift in Sources */,
 				C3E4587C1D053E7A00F28C27 /* Workout.swift in Sources */,
+				C34C84291D05786200AC0042 /* SelectWorkoutTableViewCell.swift in Sources */,
 				C3E458841D053EBB00F28C27 /* GroupDetailViewController.swift in Sources */,
 				C3E458721D053E1500F28C27 /* Exercise.swift in Sources */,
 				C3E458741D053E2900F28C27 /* SpartanAPI.swift in Sources */,
@@ -636,6 +648,7 @@
 				C3E4585A1D053ABE00F28C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3E4585B1D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLogTests" */ = {
 			isa = XCConfigurationList;
@@ -644,6 +657,7 @@
 				C3E4585D1D053ABE00F28C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3E4585E1D053ABE00F28C27 /* Build configuration list for PBXNativeTarget "SpartanLogUITests" */ = {
 			isa = XCConfigurationList;
@@ -652,6 +666,7 @@
 				C3E458601D053ABE00F28C27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

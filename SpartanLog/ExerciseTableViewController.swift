@@ -18,17 +18,11 @@ class ExerciseTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        activityIndicator.alpha = 1.0
-        activityIndicator.startAnimating()
-        
         getExercises()
     }
     
@@ -105,6 +99,8 @@ class ExerciseTableViewController: UITableViewController {
     // MARK:  CRUD Operations
     
     func getExercises() {
+        self.startActivityIndicator()
+        
         SpartanAPI.sharedInstance().getExercises() { (exercises, error) in
             
             if let exercises = exercises {
@@ -117,12 +113,13 @@ class ExerciseTableViewController: UITableViewController {
                 print(error)
             }
             
-            self.activityIndicator.alpha = 0.0
-            self.activityIndicator.stopAnimating()
+            self.stopActivityIndicator()
         }
     }
     
     func createExercise(exercise: Exercise) {
+        self.startActivityIndicator()
+        
         SpartanAPI.sharedInstance().createExercise(exercise) { (exercise, error) in
             
             if let exercise = exercise {
@@ -136,12 +133,13 @@ class ExerciseTableViewController: UITableViewController {
                 print(error)
             }
             
-            self.activityIndicator.alpha = 0.0
-            self.activityIndicator.stopAnimating()
+            self.stopActivityIndicator()
         }
     }
     
     func updateExercise(exercise: Exercise, indexPath: NSIndexPath) {
+        self.startActivityIndicator()
+        
         SpartanAPI.sharedInstance().updateExercise(exercise) { (exercise, error) in
             
             if let exercise = exercise {
@@ -154,12 +152,13 @@ class ExerciseTableViewController: UITableViewController {
                 print(error)
             }
             
-            self.activityIndicator.alpha = 0.0
-            self.activityIndicator.stopAnimating()
+            self.stopActivityIndicator()
         }
     }
     
     func deleteExercise(indexPath: NSIndexPath) {
+        self.startActivityIndicator()
+        
         let exercise = exercises[indexPath.row]
         
         SpartanAPI.sharedInstance().deleteExercise(exercise) {
@@ -174,8 +173,19 @@ class ExerciseTableViewController: UITableViewController {
                 }
             }
             
-            self.activityIndicator.alpha = 0.0
-            self.activityIndicator.stopAnimating()
+            self.stopActivityIndicator()
         }
+    }
+    
+    // MARK: Helper Functions
+    
+    func startActivityIndicator() {
+        activityIndicator.alpha = 1.0
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.alpha = 0.0
+        activityIndicator.stopAnimating()
     }
 }

@@ -9,87 +9,182 @@
 import UIKit
 
 class WorkoutTableViewController: UITableViewController {
-
+    
+    // MARK: Properties
+    
+    var workouts = [Workout]()
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        navigationItem.leftBarButtonItem = editButtonItem()
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        getWorkouts()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return workouts.count
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "WorkoutTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WorkoutTableViewCell
+        
+        // Fetches the appropriate workout for the data source layout.
+        let workout = workouts[indexPath.row]
+        
+        cell.nameLabel!.text = workout.name
+        
         return cell
     }
-    */
-
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            deleteWorkout(indexPath)
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowWorkoutDetail" {
+            let workoutDetailViewController = segue.destinationViewController as! WorkoutDetailViewController
+            
+            // Get the cell that generated this segue.
+            if let selectedWorkoutCell = sender as? WorkoutTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedWorkoutCell)!
+                let selectedWorkout = workouts[indexPath.row]
+                workoutDetailViewController.workout = selectedWorkout
+            }
+        }
     }
-    */
-
+    
+    @IBAction func unwindToWorkoutList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? WorkoutDetailViewController, workout = sourceViewController.workout {
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                updateWorkout(workout, indexPath: selectedIndexPath)
+                
+            } else {
+                createWorkout(workout)
+            }
+        }
+    }
+    
+    // MARK:  CRUD Operations
+    
+    func getWorkouts() {
+        self.startActivityIndicator()
+        
+        SpartanAPI.sharedInstance().getWorkouts() { (workouts, error) in
+            
+            if let workouts = workouts {
+                performUIUpdatesOnMain {
+                    self.workouts = workouts
+                    self.tableView.reloadData()
+                }
+                
+            } else {
+                print(error)
+            }
+            
+            self.stopActivityIndicator()
+        }
+    }
+    
+    func createWorkout(workout: Workout) {
+        self.startActivityIndicator()
+        
+        SpartanAPI.sharedInstance().createWorkout(workout) { (workout, error) in
+            
+            if let workout = workout {
+                performUIUpdatesOnMain {
+                    let newIndexPath = NSIndexPath(forRow: self.workouts.count, inSection: 0)
+                    self.workouts.append(workout)
+                    self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                }
+                
+            } else {
+                print(error)
+            }
+            
+            self.stopActivityIndicator()
+        }
+    }
+    
+    func updateWorkout(workout: Workout, indexPath: NSIndexPath) {
+        self.startActivityIndicator()
+        
+        SpartanAPI.sharedInstance().updateWorkout(workout) { (workout, error) in
+            
+            if let workout = workout {
+                performUIUpdatesOnMain {
+                    self.workouts[indexPath.row] = workout
+                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                }
+                
+            } else {
+                print(error)
+            }
+            
+            self.stopActivityIndicator()
+        }
+    }
+    
+    func deleteWorkout(indexPath: NSIndexPath) {
+        self.startActivityIndicator()
+        
+        let workout = workouts[indexPath.row]
+        
+        SpartanAPI.sharedInstance().deleteWorkout(workout) {
+            (workouts, error) in
+            if let error = error {
+                print(error)
+                
+            } else {
+                performUIUpdatesOnMain {
+                    self.workouts.removeAtIndex(indexPath.row)
+                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                }
+            }
+            
+            self.stopActivityIndicator()
+        }
+    }
+    
+    // MARK: Helper Functions
+    
+    func startActivityIndicator() {
+        activityIndicator.alpha = 1.0
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.alpha = 0.0
+        activityIndicator.stopAnimating()
+    }
 }

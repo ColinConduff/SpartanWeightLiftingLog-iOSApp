@@ -20,7 +20,7 @@ class Group: NSObject {
     
     // MARK: Initialization
     
-    init?(id: Int?, name: String, createdAt: String?, updatedAt: String?, workouts: [Workout]?) {
+    init?(id: Int? = nil, name: String, createdAt: String? = nil, updatedAt: String? = nil, workouts: [Workout]? = nil) {
         self.id = id
         self.name = name
         self.createdAt = createdAt

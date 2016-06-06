@@ -24,6 +24,7 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
     var bodyRegions = [
         "Chest", "Triceps", "Shoulders", "Back", "Biceps", "Forearms", "Legs", "Fullbody"
     ]
+    var updating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
         
         // Set up views if editing an existing exercise.
         if let exercise = exercise {
+            updating = true
             navigationItem.title = exercise.name
             exerciseNameTextField.text   = exercise.name
             let row = bodyRegions.indexOf(exercise.bodyRegion)
@@ -96,10 +98,7 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
     // MARK: Navigation
     
     @IBAction func cancel(sender: UIBarButtonItem) {
-        // Depending on style of presentation (modal or push presentation), this view controller needs to be dismissed in two different ways.
-        let isPresentingInAddExerciseMode = presentingViewController is UINavigationController
-        
-        if isPresentingInAddExerciseMode {
+        if !updating {
             dismissViewControllerAnimated(true, completion: nil)
         } else {
             navigationController!.popViewControllerAnimated(true)

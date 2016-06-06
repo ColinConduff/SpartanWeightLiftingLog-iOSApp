@@ -9,7 +9,11 @@
 import UIKit
 
 class SetTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var setNumberLabel: UILabel!
+    @IBOutlet weak var repetitionsLabel: UILabel?
+    @IBOutlet weak var weightLabel: UILabel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

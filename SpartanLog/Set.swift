@@ -13,15 +13,19 @@ class Set: NSObject {
     // MARK: Properties
     
     var id: Int?
+    var workoutID: Int?
+    var exerciseID: Int?
     var repetitions: Int
-    var weight: Int
+    var weight: Double
     var createdAt: String?
     var updatedAt: String?
     
     // MARK: Initialization
     
-    init?(id: Int?, repetitions: Int, weight: Int, createdAt: String?, updatedAt: String?, exercises: [Exercise]?) {
+    init?(id: Int? = nil, workoutID: Int? = nil, exerciseID: Int? = nil, repetitions: Int, weight: Double, createdAt: String? = nil, updatedAt: String? = nil) {
         self.id = id
+        self.workoutID = workoutID
+        self.exerciseID = exerciseID
         self.repetitions = repetitions
         self.weight = weight
         self.createdAt = createdAt
