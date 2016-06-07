@@ -653,14 +653,22 @@
                     <tabBarItem key="tabBarItem" title="Log" id="8xD-y6-duV"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Sets" id="scj-Dw-ONi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HaI-b9-GJr">
-                            <connections>
-                                <segue destination="6mh-pe-MPL" kind="presentation" id="1Gj-Iq-GrD"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="HaI-b9-GJr">
+                                <connections>
+                                    <segue destination="6mh-pe-MPL" kind="presentation" id="1Gj-Iq-GrD"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Timer" id="apl-hp-KG5">
+                                <connections>
+                                    <action selector="startOrStopTimer:" destination="EIY-dZ-LWg" id="ZNe-w1-wbW"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="Ouf-5c-bC7" id="eG7-Ik-zwm"/>
+                        <outlet property="timerDisplay" destination="apl-hp-KG5" id="dHr-S6-bAX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AzG-X1-7Co" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -817,7 +825,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Xwu-ux-BV2" secondAttribute="trailing" id="pY9-P1-vr7"/>
                                 </constraints>
                             </stackView>
-                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVZ-gb-GpA">
+                            <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVZ-gb-GpA">
                                 <rect key="frame" x="20" y="518" width="560" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.29695092610000001" blue="0.27143549309999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete">
@@ -830,9 +838,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LVZ-gb-GpA" secondAttribute="trailing" id="2SA-z9-TBK"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="LVZ-gb-GpA" secondAttribute="leading" id="4Iu-1j-deh"/>
                             <constraint firstItem="pJf-wD-orz" firstAttribute="top" secondItem="Cz6-q9-Vlg" secondAttribute="bottom" constant="20" id="Cyl-OD-0uj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pJf-wD-orz" secondAttribute="trailing" id="p7w-bi-jIp"/>
                             <constraint firstItem="pJf-wD-orz" firstAttribute="leading" secondItem="P6L-7P-7aY" secondAttribute="leadingMargin" id="rN7-PD-3H0"/>
+                            <constraint firstItem="Ksm-hz-iM8" firstAttribute="top" secondItem="LVZ-gb-GpA" secondAttribute="bottom" constant="8" id="xx8-Bl-2bv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Set" id="9CW-9I-Qrq">

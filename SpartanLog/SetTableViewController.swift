@@ -87,6 +87,149 @@ class SetTableViewController: UITableViewController {
         }
     }
     
+    // MARK: Timer Functions
+    
+    @IBOutlet weak var timerDisplay: UIBarButtonItem!
+    var timer: NSTimer?
+    var timerForSeconds: NSTimer?
+    var secondCounter: Int?
+    
+    func timerFinished() {
+        timerDisplay.title = "Timer"
+        
+        timer?.invalidate()
+        timer = nil
+        
+        timerForSeconds?.invalidate()
+        timerForSeconds = nil
+    }
+    
+    func displaySeconds() {
+        secondCounter! -= 1
+        
+        if secondCounter == 0 {
+            timerForSeconds?.invalidate()
+            timerForSeconds = nil
+        }
+        
+        let minutes = secondCounter! / 60
+        var minutesDisplay = "\(minutes):"
+        
+        let seconds = secondCounter! % 60
+        var secondsDisplay = "\(seconds)"
+        
+        if seconds < 10 {
+            secondsDisplay = "0\(seconds)"
+        }
+        if minutes == 0 {
+            minutesDisplay = ""
+        }
+        
+        timerDisplay.title = "\(minutesDisplay)\(secondsDisplay)"
+    }
+    
+    @IBAction func startOrStopTimer(sender: UIBarButtonItem) {
+        
+        if timer != nil {
+            timerDisplay.title = "Timer"
+            
+            timer?.invalidate()
+            timer = nil
+            
+            timerForSeconds?.invalidate()
+            timerForSeconds = nil
+            
+            return
+        }
+        
+        let alertController = UIAlertController(
+            title: "UIAlertController",
+            message: "This is UIAlertController",
+            preferredStyle: .ActionSheet)
+        
+        let thirtySecondsTimer = UIAlertAction(
+            title: "30 Sec",
+            style: .Default,
+            handler: { (alert) in
+                
+                self.secondCounter = 30
+                
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(
+                    30,
+                    target: self,
+                    selector: #selector(self.timerFinished),
+                    userInfo: nil,
+                    repeats: false)
+                
+                self.timerForSeconds = NSTimer.scheduledTimerWithTimeInterval(
+                    1,
+                    target: self,
+                    selector: #selector(self.self.displaySeconds),
+                    userInfo: nil,
+                    repeats: true)
+        })
+        
+        let oneMinuteTimer = UIAlertAction(
+            title: "1 Min",
+            style: .Default,
+            handler: { (alert) in
+                
+                self.secondCounter = 60
+                
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(
+                    60,
+                    target: self,
+                    selector: #selector(self.timerFinished),
+                    userInfo: nil,
+                    repeats: false)
+                
+                self.timerForSeconds = NSTimer.scheduledTimerWithTimeInterval(
+                    1,
+                    target: self,
+                    selector: #selector(self.self.displaySeconds),
+                    userInfo: nil,
+                    repeats: true)
+        })
+        
+        let twoMinuteTimer = UIAlertAction(
+            title: "2 Min",
+            style: .Default,
+            handler: { (alert) in
+                
+                self.secondCounter = 120
+                
+                self.timer = NSTimer.scheduledTimerWithTimeInterval(
+                    120,
+                    target: self,
+                    selector: #selector(self.timerFinished),
+                    userInfo: nil,
+                    repeats: false)
+                
+                self.timerForSeconds = NSTimer.scheduledTimerWithTimeInterval(
+                    1,
+                    target: self,
+                    selector: #selector(self.self.displaySeconds),
+                    userInfo: nil,
+                    repeats: true)
+        })
+        
+        let cancelTimer = UIAlertAction(
+            title: "Cancel",
+            style: .Default,
+            handler: { (alert) in })
+        
+        alertController.addAction(thirtySecondsTimer)
+        alertController.addAction(oneMinuteTimer)
+        alertController.addAction(twoMinuteTimer)
+        alertController.addAction(cancelTimer)
+        
+        self.presentViewController(
+            alertController,
+            animated: true,
+            completion: nil)
+    }
+    
+    
     // MARK:  CRUD Operations
     
     func getSets(workout: Workout, exercise: Exercise) {
