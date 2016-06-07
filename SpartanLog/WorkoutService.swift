@@ -14,14 +14,12 @@ extension SpartanAPI {
         
         let path = "workouts"
         
-        /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
-            } else {
                 
+            } else {
                 if let results = results["data"] as? [[String:AnyObject]] {
                     
                     var workouts = [Workout]()
@@ -48,10 +46,8 @@ extension SpartanAPI {
         
         let path = "workouts/\(workout.id!)"
         
-        /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
@@ -103,10 +99,8 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
@@ -144,14 +138,12 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPUTMethod(path, parameters: nil, jsonBody: jsonBody!) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
-            } else {
                 
+            } else {
                 if let results = results["workout"] as? [String:AnyObject] {
                     
                     let workout = self.useResponseDataToMakeWorkout(results)
@@ -176,7 +168,6 @@ extension SpartanAPI {
         
         taskForDELETEMethod(path) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 
@@ -202,10 +193,8 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 
@@ -232,10 +221,8 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 

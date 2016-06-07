@@ -55,7 +55,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         registerButton.enabled = false
     }
     
-    func checkValidRegistrationValues() {
+    private func checkValidRegistrationValues() {
         // Disable the Save button if the text field is empty.
         let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
@@ -75,6 +75,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             performUIUpdatesOnMain {
                 if success {
                     self.completeLogin()
+                
+                } else {
+                    self.registrationFailed()
                 }
             }
         }
@@ -83,5 +86,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     private func completeLogin() {
         let controller = storyboard!.instantiateViewControllerWithIdentifier("AfterLoginTabBarController") as! UITabBarController
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    private func registrationFailed() {
+        self.passwordTextField.text = ""
+        self.registerButton.enabled = false
+        self.registerButton.setTitle("Please try again", forState: .Disabled)
     }
 }

@@ -38,7 +38,9 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
         if let exercise = exercise {
             updating = true
             navigationItem.title = exercise.name
-            exerciseNameTextField.text   = exercise.name
+            exerciseNameTextField.text = exercise.name
+            
+            // set picker to correct body region
             let row = bodyRegions.indexOf(exercise.bodyRegion)
             if let row = row {
                 bodyRegionPicker.selectRow(row, inComponent: 0, animated: true)

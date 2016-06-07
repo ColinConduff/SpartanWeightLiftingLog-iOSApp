@@ -71,6 +71,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             performUIUpdatesOnMain {
                 if success {
                     self.completeLogin()
+                    
+                } else {
+                    self.loginFailed()
                 }
             }
         }
@@ -79,5 +82,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     private func completeLogin() {
         let controller = storyboard!.instantiateViewControllerWithIdentifier("AfterLoginTabBarController") as! UITabBarController
         presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    private func loginFailed() {
+        self.passwordTextField.text = ""
+        self.loginButton.enabled = false
+        self.loginButton.setTitle("Please try again", forState: .Disabled)
     }
 }
