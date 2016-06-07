@@ -1,22 +1,23 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  SpartanLog
 //
-//  Created by Colin Conduff on 6/6/16.
+//  Created by Colin Conduff on 6/7/16.
 //  Copyright © 2016 Colin Conduff. All rights reserved.
 //
 
 import UIKit
 
-// MARK: - LoginViewController
+// MARK: - RegisterViewController
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
     
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     
     // MARK: Life Cycle
     
@@ -27,12 +28,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        nameTextField.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
-        loginButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
+        registerButton.setTitleColor(UIColor.lightGrayColor(), forState: .Disabled)
         
-        checkValidLoginValues()
+        checkValidRegistrationValues()
     }
     
     // MARK: UITextFieldDelegate
@@ -44,30 +46,32 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        checkValidLoginValues()
+        checkValidRegistrationValues()
         navigationItem.title = textField.text
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         // Disable the Save button while editing.
-        loginButton.enabled = false
+        registerButton.enabled = false
     }
     
-    func checkValidLoginValues() {
+    func checkValidRegistrationValues() {
         // Disable the Save button if the text field is empty.
+        let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         
-        loginButton.enabled = !email.isEmpty && !password.isEmpty
+        registerButton.enabled = !name.isEmpty && !email.isEmpty && !password.isEmpty
     }
     
     // MARK: Actions
     
-    @IBAction func loginPressed(sender: AnyObject) {
+    @IBAction func registerButtonPressed(sender: AnyObject) {
+        let name = nameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
-        SpartanAPI.sharedInstance().login(email, password: password) { (success, errorString) in
+        SpartanAPI.sharedInstance().register(name, email: email, password: password) { (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
                     self.completeLogin()
