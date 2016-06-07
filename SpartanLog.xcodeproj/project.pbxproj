@@ -220,11 +220,11 @@
 		C3E458611D053D5300F28C27 /* Exercise */ = {
 			isa = PBXGroup;
 			children = (
+				C3E4586D1D053DF800F28C27 /* ExerciseDetailViewController.swift */,
 				C3E458691D053DD000F28C27 /* ExerciseTableViewController.swift */,
 				C3E4586B1D053DE300F28C27 /* ExerciseTableViewCell.swift */,
-				C3E4586D1D053DF800F28C27 /* ExerciseDetailViewController.swift */,
-				C3E4586F1D053E0C00F28C27 /* ExerciseService.swift */,
 				C3E458711D053E1500F28C27 /* Exercise.swift */,
+				C3E4586F1D053E0C00F28C27 /* ExerciseService.swift */,
 			);
 			name = Exercise;
 			sourceTree = "<group>";

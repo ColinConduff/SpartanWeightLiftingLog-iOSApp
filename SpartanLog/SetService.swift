@@ -32,15 +32,15 @@ extension SpartanAPI {
                     var sets = [Set]()
                     
                     for result in results {
-                        let id = result["id"] as? Int
-                        let workoutID = result["workout_id"] as? Int
-                        let exerciseID = result["exercise_id"] as? Int
-                        let repetitions = result["repetitions"] as? Int
-                        let weight = result["weight"] as? Double
-                        let createdAt = result["created_at"] as? String
-                        let updatedAt = result["updated_at"] as? String
+                        let set = self.useResponseDataToMakeSet(result)
                         
-                        sets.append(Set(id: id!, workoutID: workoutID!, exerciseID: exerciseID!, repetitions: repetitions!, weight: weight!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        if set != nil {
+                            sets.append(set!)
+                        
+                        } else {
+                            print("nil in getSets")
+                            completionHandler(result: nil, error: NSError(domain: "Nil found when making set", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making set"]))
+                        }
                     }
                     
                     completionHandler(result: sets, error: nil)
@@ -68,24 +68,25 @@ extension SpartanAPI {
                 if let results = results["set"] as? [String:AnyObject] {
                     
                     var workouts = [Workout]()
-                    if let results = results["workouts"] as? [String:AnyObject] {
-                        let id = results["id"] as? Int
-                        let name = results["name"] as? String
-                        let createdAt = results["created_at"] as? String
-                        let updatedAt = results["updated_at"] as? String
-                        
-                        workouts.append(Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                    if let results = results["workouts"] as? [[String:AnyObject]] {
+                        for result in results {
+                            let workout = self.useResponseDataToMakeWorkout(result)
+                            
+                            if let workout = workout {
+                                workouts.append(workout)
+                                
+                            } else {
+                                print("nil in getSet")
+                                completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                            }
+                        }
                     }
                     
-                    let id = results["id"] as? Int
-                    let workoutID = results["workout_id"] as? Int
-                    let exerciseID = results["exercise_id"] as? Int
-                    let repetitions = results["repetitions"] as? Int
-                    let weight = results["weight"] as? Double
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let set = self.useResponseDataToMakeSet(results)
                     
-                    let set = Set(id: id!, workoutID: workoutID!, exerciseID: exerciseID!, repetitions: repetitions!, weight: weight!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if set == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making set", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making set"]))
+                    }
                     
                     completionHandler(result: set, error: nil)
                     
@@ -96,7 +97,7 @@ extension SpartanAPI {
         }
     }
     
-    func createSet(set: Set, completionHandler: (result: Set?, error: NSError?) -> Void)  {
+    func createSet(set: Set, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ncreateSet")
         
         let path = "sets"
@@ -121,30 +122,14 @@ extension SpartanAPI {
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
-            } else {
                 
-                if let results = results as? [String:AnyObject] {
-                    
-                    let id = results["id"] as? Int
-                    let workoutID = results["workout_id"] as? Int
-                    let exerciseID = results["exercise_id"] as? Int
-                    let repetitions = results["repetitions"] as? Int
-                    let weight = results["weight"] as? Double
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
-                    
-                    let set = Set(id: id!, workoutID: workoutID!, exerciseID: exerciseID!, repetitions: repetitions!, weight: weight!, createdAt: createdAt!, updatedAt: updatedAt!)
-                    
-                    completionHandler(result: set, error: nil)
-                    
-                } else {
-                    completionHandler(result: nil, error: NSError(domain: "createSet parse error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse createSet response"]))
-                }
+            } else {
+                completionHandler(result: results, error: nil)
             }
         }
     }
     
-    func updateSet(set: Set, completionHandler: (result: Set?, error: NSError?) -> Void)  {
+    func updateSet(set: Set, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\nupdateSet")
         
         let path = "sets/\(set.id!)"
@@ -169,25 +154,9 @@ extension SpartanAPI {
             /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
-            } else {
                 
-                if let results = results["set"] as? [String:AnyObject] {
-                    
-                    let id = results["id"] as? Int
-                    let workoutID = results["workout_id"] as? Int
-                    let exerciseID = results["exercise_id"] as? Int
-                    let repetitions = results["repetitions"] as? Int
-                    let weight = results["weight"] as? Double
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
-                    
-                    let set = Set(id: id!, workoutID: workoutID!, exerciseID: exerciseID!, repetitions: repetitions!, weight: weight!, createdAt: createdAt!, updatedAt: updatedAt!)
-                    
-                    completionHandler(result: set, error: nil)
-                    
-                } else {
-                    completionHandler(result: nil, error: NSError(domain: "createSet parse error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse createSet response"]))
-                }
+            } else {
+                completionHandler(result: results, error: nil)
             }
         }
     }
@@ -206,6 +175,29 @@ extension SpartanAPI {
             } else {
                 completionHandler(result: results, error: nil)
             }
+        }
+    }
+    
+    // MARK: Helper Functions
+    
+    func useResponseDataToMakeSet(result: AnyObject) -> Set? {
+        
+        let id = result["id"] as? Int
+        let workoutID = result["workout_id"] as? Int
+        let exerciseID = result["exercise_id"] as? Int
+        let repetitions = result["repetitions"] as? Int
+        let weight = (result["weight"] as? NSString)?.doubleValue
+        let createdAt = result["created_at"] as? String
+        let updatedAt = result["updated_at"] as? String
+        
+        if let id = id, let workoutID = workoutID, let exerciseID = exerciseID,
+            let repetitions = repetitions, let weight = weight,
+            let createdAt = createdAt, let updatedAt = updatedAt {
+        
+            return Set(id: id, workoutID: workoutID, exerciseID: exerciseID, repetitions: repetitions, weight: weight, createdAt: createdAt, updatedAt: updatedAt)!
+            
+        } else {
+            return nil
         }
     }
 }

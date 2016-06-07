@@ -74,17 +74,17 @@ class SelectGroupTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getGroups() { (groups, error) in
             
-            if let groups = groups {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let groups = groups {
                     self.groups = groups
                     self.tableView.reloadData()
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     

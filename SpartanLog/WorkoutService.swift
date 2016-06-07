@@ -27,12 +27,11 @@ extension SpartanAPI {
                     var workouts = [Workout]()
                     
                     for result in results {
-                        let id = result["id"] as? Int
-                        let name = result["name"] as? String
-                        let createdAt = result["created_at"] as? String
-                        let updatedAt = result["updated_at"] as? String
+                        let workout = self.useResponseDataToMakeWorkout(result)
                         
-                        workouts.append(Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        if let workout = workout {
+                            workouts.append(workout)
+                        }
                     }
                     
                     completionHandler(result: workouts, error: nil)
@@ -63,22 +62,21 @@ extension SpartanAPI {
                     if let results = results["exercises"] as? [[String:AnyObject]] {
                         
                         for result in results {
-                            let id = result["id"] as? Int
-                            let name = result["name"] as? String
-                            let bodyRegion = result["bodyRegion"] as? String
-                            let createdAt = result["created_at"] as? String
-                            let updatedAt = result["updated_at"] as? String
+                            let exercise = self.useResponseDataToMakeExercise(result)
                             
-                            exercises.append(Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                            if let exercise = exercise {
+                                exercises.append(exercise)
+                            }
                         }
                     }
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let workout = self.useResponseDataToMakeWorkout(results)
                     
-                    let workout = Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!, exercises: exercises)
+                    if workout == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                    }
+                    
+                    workout!.exercises = exercises
                     
                     completionHandler(result: workout, error: nil)
                     
@@ -115,12 +113,11 @@ extension SpartanAPI {
                 
                 if let results = results as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let workout = self.useResponseDataToMakeWorkout(results)
                     
-                    let workout = Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if workout == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                    }
                     
                     completionHandler(result: workout, error: nil)
                     
@@ -157,12 +154,11 @@ extension SpartanAPI {
                 
                 if let results = results["workout"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let workout = self.useResponseDataToMakeWorkout(results)
                     
-                    let workout = Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if workout == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                    }
                     
                     completionHandler(result: workout, error: nil)
                     
@@ -247,6 +243,23 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: nil)
                 
             }
+        }
+    }
+    
+    // MARK: Helper Functions
+    
+    func useResponseDataToMakeWorkout(result: AnyObject) -> Workout? {
+        
+        let id = result["id"] as? Int
+        let name = result["name"] as? String
+        let createdAt = result["created_at"] as? String
+        let updatedAt = result["updated_at"] as? String
+        
+        if let id = id, let name = name,
+            let createdAt = createdAt, let updatedAt = updatedAt {
+            return Workout(id: id, name: name, createdAt: createdAt, updatedAt: updatedAt)
+        } else {
+            return nil
         }
     }
 }

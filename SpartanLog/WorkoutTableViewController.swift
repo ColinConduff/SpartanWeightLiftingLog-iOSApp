@@ -102,17 +102,17 @@ class WorkoutTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getWorkouts() { (workouts, error) in
             
-            if let workouts = workouts {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let workouts = workouts {
                     self.workouts = workouts
                     self.tableView.reloadData()
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -121,18 +121,18 @@ class WorkoutTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().createWorkout(workout) { (workout, error) in
             
-            if let workout = workout {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let workout = workout {
                     let newIndexPath = NSIndexPath(forRow: self.workouts.count, inSection: 0)
                     self.workouts.append(workout)
                     self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -141,17 +141,17 @@ class WorkoutTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().updateWorkout(workout) { (workout, error) in
             
-            if let workout = workout {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let workout = workout {
                     self.workouts[indexPath.row] = workout
                     self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -162,17 +162,18 @@ class WorkoutTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().deleteWorkout(workout) {
             (workouts, error) in
-            if let error = error {
-                print(error)
-                
-            } else {
-                performUIUpdatesOnMain {
+            
+            performUIUpdatesOnMain {
+                if let error = error {
+                    print(error)
+                    
+                } else {
                     self.workouts.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 }
+                
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     

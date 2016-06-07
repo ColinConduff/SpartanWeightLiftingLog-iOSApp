@@ -27,12 +27,11 @@ extension SpartanAPI {
                     var groups = [Group]()
                     
                     for result in results {
-                        let id = result["id"] as? Int
-                        let name = result["name"] as? String
-                        let createdAt = result["created_at"] as? String
-                        let updatedAt = result["updated_at"] as? String
+                        let group = self.useResponseDataToMakeGroup(result)
                         
-                        groups.append(Group(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        if let group = group {
+                            groups.append(group)
+                        }
                     }
                     
                     completionHandler(result: groups, error: nil)
@@ -63,21 +62,21 @@ extension SpartanAPI {
                     if let results = results["workouts"] as? [[String:AnyObject]] {
                         
                         for result in results {
-                            let id = result["id"] as? Int
-                            let name = result["name"] as? String
-                            let createdAt = result["created_at"] as? String
-                            let updatedAt = result["updated_at"] as? String
+                            let workout = self.useResponseDataToMakeWorkout(result)
                             
-                            workouts.append(Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                            if let workout = workout {
+                                workouts.append(workout)
+                            }
                         }
                     }
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let group = self.useResponseDataToMakeGroup(results)
                     
-                    let group = Group(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!, workouts: workouts)
+                    if group == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making group", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making group"]))
+                    }
+                    
+                    group!.workouts = workouts
                     
                     completionHandler(result: group, error: nil)
                     
@@ -114,12 +113,11 @@ extension SpartanAPI {
                 
                 if let results = results as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let group = self.useResponseDataToMakeGroup(results)
                     
-                    let group = Group(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if group == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making group", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making group"]))
+                    }
                     
                     completionHandler(result: group, error: nil)
                     
@@ -156,12 +154,11 @@ extension SpartanAPI {
                 
                 if let results = results["group"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let group = self.useResponseDataToMakeGroup(results)
                     
-                    let group = Group(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if group == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making group", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making group"]))
+                    }
                     
                     completionHandler(result: group, error: nil)
                     
@@ -248,5 +245,21 @@ extension SpartanAPI {
             }
         }
     }
-
+    
+    // MARK: Helper Functions
+    
+    func useResponseDataToMakeGroup(result: AnyObject) -> Group? {
+        
+        let id = result["id"] as? Int
+        let name = result["name"] as? String
+        let createdAt = result["created_at"] as? String
+        let updatedAt = result["updated_at"] as? String
+        
+        if let id = id, let name = name,
+            let createdAt = createdAt, let updatedAt = updatedAt {
+            return Group(id: id, name: name, createdAt: createdAt, updatedAt: updatedAt)
+        } else {
+            return nil
+        }
+    }
 }

@@ -79,18 +79,18 @@ class SelectExerciseTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getWorkout(workout) { (workout, error) in
             
-            if let workout = workout {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let workout = workout {
                     self.workout = workout
                     self.exercises = workout.exercises!
                     self.tableView.reloadData()
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     

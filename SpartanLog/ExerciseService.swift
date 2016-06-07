@@ -27,13 +27,13 @@ extension SpartanAPI {
                     var exercises = [Exercise]()
                     
                     for result in results {
-                        let id = result["id"] as? Int
-                        let name = result["name"] as? String
-                        let bodyRegion = result["bodyRegion"] as? String
-                        let createdAt = result["created_at"] as? String
-                        let updatedAt = result["updated_at"] as? String
+                        let exercise = self.useResponseDataToMakeExercise(result)
                         
-                        exercises.append(Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        if let exercise = exercise {
+                            exercises.append(exercise)
+                        } else {
+                            completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                        }
                     }
                     
                     completionHandler(result: exercises, error: nil)
@@ -60,13 +60,11 @@ extension SpartanAPI {
                 
                 if let results = results["exercise"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let bodyRegion = results["bodyRegion"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let exercise = self.useResponseDataToMakeExercise(results)
                     
-                    let exercise = Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if exercise == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                    }
                     
                     completionHandler(result: exercise, error: nil)
                     
@@ -104,13 +102,11 @@ extension SpartanAPI {
                 
                 if let results = results as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let bodyRegion = results["bodyRegion"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let exercise = self.useResponseDataToMakeExercise(results)
                     
-                    let exercise = Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if exercise == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                    }
                     
                     completionHandler(result: exercise, error: nil)
                     
@@ -148,13 +144,11 @@ extension SpartanAPI {
                 
                 if let results = results["exercise"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let bodyRegion = results["bodyRegion"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let exercise = self.useResponseDataToMakeExercise(results)
                     
-                    let exercise = Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if exercise == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                    }
                     
                     completionHandler(result: exercise, error: nil)
                     
@@ -179,6 +173,24 @@ extension SpartanAPI {
             } else {
                 completionHandler(result: results, error: nil)
             }
+        }
+    }
+    
+    // MARK: Helper Functions
+    
+    func useResponseDataToMakeExercise(result: AnyObject) -> Exercise? {
+        
+        let id = result["id"] as? Int
+        let name = result["name"] as? String
+        let bodyRegion = result["bodyRegion"] as? String
+        let createdAt = result["created_at"] as? String
+        let updatedAt = result["updated_at"] as? String
+        
+        if let id = id, let name = name, let bodyRegion = bodyRegion,
+            let createdAt = createdAt, let updatedAt = updatedAt {
+            return Exercise(id: id, name: name, bodyRegion: bodyRegion, createdAt: createdAt, updatedAt: updatedAt)
+        } else {
+            return nil
         }
     }
 }

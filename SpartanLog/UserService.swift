@@ -15,8 +15,8 @@ extension SpartanAPI {
         let path = "auth/login"
         
         let jsonBodyDictionary = [
-            "email": email,
-            "password": password
+            "email": "test@gmail.com",//email,
+            "password": "123456"//password
         ]
         
         var jsonBody: NSData?
