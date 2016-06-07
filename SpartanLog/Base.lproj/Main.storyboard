@@ -793,7 +793,7 @@
                             </barButtonItem>
                             <barButtonItem title="Timer" id="apl-hp-KG5">
                                 <connections>
-                                    <action selector="startOrStopTimer:" destination="EIY-dZ-LWg" id="ZNe-w1-wbW"/>
+                                    <action selector="startTimerOrStopTimerIfNil:" destination="EIY-dZ-LWg" id="SyS-Fy-cuT"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -1340,9 +1340,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="adi-hL-awW"/>
+        <segue reference="MsD-L0-3Kx"/>
         <segue reference="yV5-RW-7DS"/>
-        <segue reference="npu-Uv-V97"/>
+        <segue reference="adi-hL-awW"/>
         <segue reference="Xpt-jI-1Jt"/>
     </inferredMetricsTieBreakers>
 </document>

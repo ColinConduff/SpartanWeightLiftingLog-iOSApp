@@ -94,16 +94,6 @@ class SetTableViewController: UITableViewController {
     var timerForSeconds: NSTimer?
     var secondCounter: Int?
     
-    func timerFinished() {
-        timerDisplay.title = "Timer"
-        
-        timer?.invalidate()
-        timer = nil
-        
-        timerForSeconds?.invalidate()
-        timerForSeconds = nil
-    }
-    
     func displaySeconds() {
         secondCounter! -= 1
         
@@ -128,16 +118,10 @@ class SetTableViewController: UITableViewController {
         timerDisplay.title = "\(minutesDisplay)\(secondsDisplay)"
     }
     
-    @IBAction func startOrStopTimer(sender: UIBarButtonItem) {
+    @IBAction func startTimerOrStopTimerIfNil(sender: UIBarButtonItem) {
         
         if timer != nil {
-            timerDisplay.title = "Timer"
-            
-            timer?.invalidate()
-            timer = nil
-            
-            timerForSeconds?.invalidate()
-            timerForSeconds = nil
+            clearTimers()
             
             return
         }
@@ -157,7 +141,7 @@ class SetTableViewController: UITableViewController {
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(
                     30,
                     target: self,
-                    selector: #selector(self.timerFinished),
+                    selector: #selector(self.clearTimers),
                     userInfo: nil,
                     repeats: false)
                 
@@ -179,7 +163,7 @@ class SetTableViewController: UITableViewController {
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(
                     60,
                     target: self,
-                    selector: #selector(self.timerFinished),
+                    selector: #selector(self.clearTimers),
                     userInfo: nil,
                     repeats: false)
                 
@@ -201,7 +185,7 @@ class SetTableViewController: UITableViewController {
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(
                     120,
                     target: self,
-                    selector: #selector(self.timerFinished),
+                    selector: #selector(self.clearTimers),
                     userInfo: nil,
                     repeats: false)
                 
@@ -227,6 +211,16 @@ class SetTableViewController: UITableViewController {
             alertController,
             animated: true,
             completion: nil)
+    }
+    
+    func clearTimers() {
+        timerDisplay.title = "Timer"
+        
+        timer?.invalidate()
+        timer = nil
+        
+        timerForSeconds?.invalidate()
+        timerForSeconds = nil
     }
     
     
