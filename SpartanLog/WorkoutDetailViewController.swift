@@ -87,7 +87,7 @@ class WorkoutDetailViewController: UIViewController, UITextFieldDelegate, UINavi
             workout = Workout(id: id, name: name)
         }
         
-        if segue.identifier == "ShowAttachExerciseTable" {
+        if segue.identifier == Const.Storyboard.ShowAttachExerciseTable {
             var destinationvc = segue.destinationViewController
             if let navcon = destinationvc as? UINavigationController {
                 destinationvc = navcon.visibleViewController ?? destinationvc

@@ -43,7 +43,7 @@ class ExerciseTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "ExerciseTableViewCell"
+        let cellIdentifier = Const.Storyboard.ExerciseTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ExerciseTableViewCell
         
         // Fetches the appropriate exercise for the data source layout.
@@ -72,7 +72,7 @@ class ExerciseTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowExerciseDetail" {
+        if segue.identifier == Const.Storyboard.ShowExerciseDetail {
             let exerciseDetailViewController = segue.destinationViewController as! ExerciseDetailViewController
             
             // Get the cell that generated this segue.

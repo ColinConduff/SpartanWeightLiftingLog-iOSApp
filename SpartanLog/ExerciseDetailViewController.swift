@@ -21,9 +21,7 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
      or constructed as part of adding a new exercise.
      */
     var exercise: Exercise?
-    var bodyRegions = [
-        "Chest", "Triceps", "Shoulders", "Back", "Biceps", "Forearms", "Legs", "Fullbody"
-    ]
+    var bodyRegions = Const.BodyRegions
     var updating = false
     
     override func viewDidLoad() {
@@ -122,5 +120,13 @@ class ExerciseDetailViewController: UIViewController, UITextFieldDelegate, UINav
             // Set the exercise to be passed to exerciseListTableViewController after the unwind segue.
             exercise = Exercise(id: id, name: name, bodyRegion: bodyRegion)
         }
+    }
+    
+    // MARK: Constants 
+    
+    struct Const {
+        static let BodyRegions = [
+            "Chest", "Triceps", "Shoulders", "Back", "Biceps", "Forearms", "Legs", "Fullbody"
+        ]
     }
 }

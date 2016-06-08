@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spartan Weight Lifting Log" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx5-Qg-jOb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spartan Weight Lifting Log" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Yx5-Qg-jOb">
                                 <rect key="frame" x="20" y="28" width="560" height="36"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -103,7 +103,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spartan Weight Lifting Log" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NN-6R-LgX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spartan Weight Lifting Log" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.55000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="2NN-6R-LgX">
                                 <rect key="frame" x="20" y="28" width="560" height="36"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -586,7 +586,9 @@
                             <outlet property="delegate" destination="Q3Z-9p-Nd2" id="pnX-N5-1wV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select a Group" id="L5t-aL-hWB"/>
+                    <navigationItem key="navigationItem" title="Select a Group" id="L5t-aL-hWB">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="hkk-Gm-iFg"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="GMa-cR-gtL" id="0jj-3v-osO"/>
                     </connections>
@@ -637,7 +639,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Log" id="7nD-di-T9R"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Select a Workout" id="0Bw-il-3Wc"/>
+                    <navigationItem key="navigationItem" title="Select a Workout" id="0Bw-il-3Wc">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="jhe-5o-E70"/>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityIndicator" destination="TtF-md-N3w" id="AY7-ZD-8Me"/>
@@ -688,7 +692,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Log" id="pU2-I5-2SB"/>
-                    <navigationItem key="navigationItem" title="Select an Exercise" id="vTc-1V-Nr2"/>
+                    <navigationItem key="navigationItem" title="Select an Exercise" id="vTc-1V-Nr2">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="RF3-Py-VIO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="xtT-Y3-OgH" id="jtl-Gm-R9f"/>
                     </connections>
@@ -730,7 +736,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UuH-7I-u6W">
                                                     <rect key="frame" x="187" y="0.0" width="177" height="53"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repetitions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arU-vw-40n">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repetitions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="arU-vw-40n">
                                                             <rect key="frame" x="0.0" y="0.0" width="177" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -747,7 +753,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x9E-vO-SUK">
                                                     <rect key="frame" x="374" y="0.0" width="177" height="53"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NcP-Gc-isk">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NcP-Gc-isk">
                                                             <rect key="frame" x="0.0" y="0.0" width="177" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -799,6 +805,7 @@
                     <tabBarItem key="tabBarItem" title="Log" id="8xD-y6-duV"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Sets" id="scj-Dw-ONi">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2Je-hu-fjl"/>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="HaI-b9-GJr">
                                 <connections>
@@ -1149,37 +1156,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="adl-FN-1WB">
-                                <rect key="frame" x="20" y="74" width="560" height="280"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="adl-FN-1WB">
+                                <rect key="frame" x="20" y="74" width="560" height="260"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-GH-RwR">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vgc-gj-F09">
-                                        <rect key="frame" x="0.0" y="40" width="560" height="240"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5i4-vG-d8L">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Body Region" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMA-wb-qo2">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="24"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1y-KT-uh2">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="c7h-Sz-nlK"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFZ-gd-Ecn">
-                                                <rect key="frame" x="0.0" y="24" width="560" height="216"/>
-                                            </pickerView>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RUj-GH-RwR">
+                                                <rect key="frame" x="0.0" y="30" width="560" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="AN2-Rz-PFa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Vgc-gj-F09">
+                                        <rect key="frame" x="0.0" y="80" width="560" height="180"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Body Region" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMA-wb-qo2">
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="WEW-Fo-jXT"/>
+                                                    <constraint firstAttribute="height" constant="21" id="j3D-qs-LXy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="j3D-qs-LXy"/>
+                                                    </mask>
+                                                </variation>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFZ-gd-Ecn">
+                                                <rect key="frame" x="0.0" y="30" width="560" height="150"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="vQI-EW-6LO"/>
+                                                </constraints>
+                                            </pickerView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="RFZ-gd-Ecn" firstAttribute="top" secondItem="Vgc-gj-F09" secondAttribute="top" constant="20" symbolic="YES" id="67K-tm-JYf"/>
+                                            <constraint firstItem="RFZ-gd-Ecn" firstAttribute="top" secondItem="aMA-wb-qo2" secondAttribute="bottom" id="QQF-yW-sjl"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="67K-tm-JYf"/>
+                                                <exclude reference="QQF-yW-sjl"/>
+                                            </mask>
+                                        </variation>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="Vgc-gj-F09" firstAttribute="top" secondItem="adl-FN-1WB" secondAttribute="top" constant="71" id="fcO-Au-m6O"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fcO-Au-m6O"/>
+                                    </mask>
+                                </variation>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="adl-FN-1WB" secondAttribute="trailing" id="N90-r3-vwy"/>
-                            <constraint firstItem="adl-FN-1WB" firstAttribute="leading" secondItem="D6c-KZ-0dA" secondAttribute="leadingMargin" id="ajV-B0-vxc"/>
-                            <constraint firstItem="adl-FN-1WB" firstAttribute="top" secondItem="CaC-ZI-WFe" secondAttribute="bottom" constant="10" id="gDq-er-XPS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="adl-FN-1WB" secondAttribute="trailing" id="Cfd-oO-8bc"/>
+                            <constraint firstItem="adl-FN-1WB" firstAttribute="leading" secondItem="D6c-KZ-0dA" secondAttribute="leadingMargin" id="VHV-2P-R4J"/>
+                            <constraint firstItem="adl-FN-1WB" firstAttribute="top" secondItem="CaC-ZI-WFe" secondAttribute="bottom" constant="10" id="rW1-rM-RYl"/>
                         </constraints>
                     </view>
                     <toolbarItems/>

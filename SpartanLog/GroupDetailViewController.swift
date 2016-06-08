@@ -88,7 +88,7 @@ class GroupDetailViewController: UIViewController, UITextFieldDelegate, UINaviga
             group = Group(id: id, name: name)
         }
     
-        if segue.identifier == "ShowAttachWorkoutTable" {
+        if segue.identifier == Const.Storyboard.ShowAttachWorkoutTable {
             var destinationvc = segue.destinationViewController
             if let navcon = destinationvc as? UINavigationController {
                 destinationvc = navcon.visibleViewController ?? destinationvc

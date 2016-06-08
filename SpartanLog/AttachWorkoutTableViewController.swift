@@ -51,7 +51,7 @@ class AttachWorkoutTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "AttachWorkoutTableViewCell"
+        let cellIdentifier = Const.Storyboard.AttachWorkoutTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AttachWorkoutTableViewCell
         
         let workout = workouts[indexPath.row]

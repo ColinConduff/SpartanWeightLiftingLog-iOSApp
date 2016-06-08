@@ -12,7 +12,7 @@ extension SpartanAPI {
     func getSets(workout: Workout, exercise: Exercise, completionHandler: (result: [Set]?, error: NSError?) -> Void) {
         print("\ngetSets")
         
-        let path = "sets"
+        let path = Const.Set.Path
         
         let parameters = [
             "workoutID": workout.id!,
@@ -27,7 +27,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
             } else {
                 
-                if let results = results["data"] as? [[String:AnyObject]] {
+                if let results = results[Const.Set.DataFromPaginatedResults] as? [[String:AnyObject]] {
                     
                     var sets = [Set]()
                     
@@ -55,7 +55,7 @@ extension SpartanAPI {
     func getSet(set: Set, completionHandler: (result: Set?, error: NSError?) -> Void) {
         print("\ngetSet")
         
-        let path = "sets/\(set.id!)"
+        let path = Const.Set.PathWithID(set.id!)
         
         /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
@@ -65,7 +65,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
             } else {
                 
-                if let results = results["set"] as? [String:AnyObject] {
+                if let results = results[Const.Set.SetContainer] as? [String:AnyObject] {
                     
                     var workouts = [Workout]()
                     if let results = results["workouts"] as? [[String:AnyObject]] {
@@ -100,7 +100,7 @@ extension SpartanAPI {
     func createSet(set: Set, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ncreateSet")
         
-        let path = "sets"
+        let path = Const.Set.Path
         
         let jsonBodyDictionary = [
             "workout_id": set.workoutID!,
@@ -132,7 +132,7 @@ extension SpartanAPI {
     func updateSet(set: Set, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\nupdateSet")
         
-        let path = "sets/\(set.id!)"
+        let path = Const.Set.PathWithID(set.id!)
         
         let jsonBodyDictionary = [
             "workout_id": set.workoutID!,
@@ -164,7 +164,7 @@ extension SpartanAPI {
     func deleteSet(set: Set, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ndeleteSet")
         
-        let path = "sets/\(set.id!)"
+        let path = Const.Set.PathWithID(set.id!)
         
         taskForDELETEMethod(path) { (results, error) in
             
@@ -182,13 +182,13 @@ extension SpartanAPI {
     
     func useResponseDataToMakeSet(result: AnyObject) -> Set? {
         
-        let id = result["id"] as? Int
-        let workoutID = result["workout_id"] as? Int
-        let exerciseID = result["exercise_id"] as? Int
-        let repetitions = result["repetitions"] as? Int
-        let weight = (result["weight"] as? NSString)?.doubleValue
-        let createdAt = result["created_at"] as? String
-        let updatedAt = result["updated_at"] as? String
+        let id = result[Const.Set.Key.id] as? Int
+        let workoutID = result[Const.Set.Key.workout_id] as? Int
+        let exerciseID = result[Const.Set.Key.exercise_id] as? Int
+        let repetitions = result[Const.Set.Key.repetitions] as? Int
+        let weight = (result[Const.Set.Key.weight] as? NSString)?.doubleValue
+        let createdAt = result[Const.Set.Key.created_at] as? String
+        let updatedAt = result[Const.Set.Key.updated_at] as? String
         
         if let id = id, let workoutID = workoutID, let exerciseID = exerciseID,
             let repetitions = repetitions, let weight = weight,

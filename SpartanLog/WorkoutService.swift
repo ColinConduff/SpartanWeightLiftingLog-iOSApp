@@ -12,7 +12,7 @@ extension SpartanAPI {
     func getWorkouts(completionHandler: (result: [Workout]?, error: NSError?) -> Void) {
         print("\ngetWorkouts")
         
-        let path = "workouts"
+        let path = Const.Workout.Path
         
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
@@ -20,7 +20,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
                 
             } else {
-                if let results = results["data"] as? [[String:AnyObject]] {
+                if let results = results[Const.Workout.DataFromPaginatedResults] as? [[String:AnyObject]] {
                     
                     var workouts = [Workout]()
                     
@@ -44,7 +44,7 @@ extension SpartanAPI {
     func getWorkout(workout: Workout, completionHandler: (result: Workout?, error: NSError?) -> Void) {
         print("\ngetWorkout")
         
-        let path = "workouts/\(workout.id!)"
+        let path = Const.Workout.PathWithID(workout.id!)
         
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
@@ -52,7 +52,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
             } else {
                 
-                if let results = results["workout"] as? [String:AnyObject] {
+                if let results = results[Const.Workout.WorkoutContainer] as? [String:AnyObject] {
                     
                     var exercises = [Exercise]()
                     if let results = results["exercises"] as? [[String:AnyObject]] {
@@ -86,7 +86,7 @@ extension SpartanAPI {
     func createWorkout(workout: Workout, completionHandler: (result: Workout?, error: NSError?) -> Void)  {
         print("\ncreateWorkout")
         
-        let path = "workouts"
+        let path = Const.Workout.Path
         
         let jsonBodyDictionary = [
             "name": workout.name
@@ -125,7 +125,7 @@ extension SpartanAPI {
     func updateWorkout(workout: Workout, completionHandler: (result: Workout?, error: NSError?) -> Void)  {
         print("\nupdateWorkout")
         
-        let path = "workouts/\(workout.id!)"
+        let path = Const.Workout.PathWithID(workout.id!)
         
         let jsonBodyDictionary = [
             "name": workout.name
@@ -144,7 +144,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
                 
             } else {
-                if let results = results["workout"] as? [String:AnyObject] {
+                if let results = results[Const.Workout.WorkoutContainer] as? [String:AnyObject] {
                     
                     let workout = self.useResponseDataToMakeWorkout(results)
                     
@@ -164,7 +164,7 @@ extension SpartanAPI {
     func deleteWorkout(workout: Workout, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ndeleteWorkout")
         
-        let path = "workouts/\(workout.id!)"
+        let path = Const.Workout.PathWithID(workout.id!)
         
         taskForDELETEMethod(path) { (results, error) in
             
@@ -180,7 +180,7 @@ extension SpartanAPI {
     func attachExercise(workout: Workout, exercise: Exercise, completionHandler: (result: Workout?, error: NSError?) -> Void)  {
         print("\nattachExercise")
         
-        let path = "workouts/\(workout.id!)/attach"
+        let path = Const.Workout.PathWithIDAndAttach(workout.id!)
         
         let jsonBodyDictionary = [
             "exerciseID": exercise.id!
@@ -208,7 +208,7 @@ extension SpartanAPI {
     func detachExercise(workout: Workout, exercise: Exercise, completionHandler: (result: Workout?, error: NSError?) -> Void)  {
         print("\ndetachExercise")
         
-        let path = "workouts/\(workout.id!)/detach"
+        let path = Const.Workout.PathWithIDAndDetach(workout.id!)
         
         let jsonBodyDictionary = [
             "exerciseID": exercise.id!
@@ -237,10 +237,10 @@ extension SpartanAPI {
     
     func useResponseDataToMakeWorkout(result: AnyObject) -> Workout? {
         
-        let id = result["id"] as? Int
-        let name = result["name"] as? String
-        let createdAt = result["created_at"] as? String
-        let updatedAt = result["updated_at"] as? String
+        let id = result[Const.Workout.Key.id] as? Int
+        let name = result[Const.Workout.Key.name] as? String
+        let createdAt = result[Const.Workout.Key.created_at] as? String
+        let updatedAt = result[Const.Workout.Key.updated_at] as? String
         
         if let id = id, let name = name,
             let createdAt = createdAt, let updatedAt = updatedAt {

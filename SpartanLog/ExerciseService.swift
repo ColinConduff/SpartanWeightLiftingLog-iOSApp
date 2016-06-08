@@ -13,7 +13,7 @@ extension SpartanAPI {
     func getExercises(completionHandler: (result: [Exercise]?, error: NSError?) -> Void) {
         print("\ngetExercises")
         
-        let path = "exercises"
+        let path = Const.Exercise.Path
         
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
@@ -22,7 +22,7 @@ extension SpartanAPI {
                 
             } else {
                 
-                if let results = results["data"] as? [[String:AnyObject]] {
+                if let results = results[Const.Exercise.DataFromPaginatedResults] as? [[String:AnyObject]] {
                     
                     var exercises = [Exercise]()
                     
@@ -48,7 +48,7 @@ extension SpartanAPI {
     func getExercise(exercise: Exercise, completionHandler: (result: Exercise?, error: NSError?) -> Void) {
         print("\ngetExercise")
         
-        let path = "exercises/\(exercise.id!)"
+        let path = Const.Exercise.PathWithID(exercise.id!)
         
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
@@ -56,7 +56,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
             } else {
                 
-                if let results = results["exercise"] as? [String:AnyObject] {
+                if let results = results[Const.Exercise.ExerciseContainer] as? [String:AnyObject] {
                     
                     let exercise = self.useResponseDataToMakeExercise(results)
                     
@@ -76,7 +76,7 @@ extension SpartanAPI {
     func createExercise(exercise: Exercise, completionHandler: (result: Exercise?, error: NSError?) -> Void)  {
         print("\ncreateExercise")
         
-        let path = "exercises"
+        let path = Const.Exercise.Path
         
         let jsonBodyDictionary = [
             "name": exercise.name,
@@ -116,7 +116,7 @@ extension SpartanAPI {
     func updateExercise(exercise: Exercise, completionHandler: (result: Exercise?, error: NSError?) -> Void)  {
         print("\nupdateExercise")
         
-        let path = "exercises/\(exercise.id!)"
+        let path = Const.Exercise.PathWithID(exercise.id!)
         
         let jsonBodyDictionary = [
             "name": exercise.name,
@@ -136,7 +136,7 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: error)
             } else {
                 
-                if let results = results["exercise"] as? [String:AnyObject] {
+                if let results = results[Const.Exercise.ExerciseContainer] as? [String:AnyObject] {
                     
                     let exercise = self.useResponseDataToMakeExercise(results)
                     
@@ -156,7 +156,7 @@ extension SpartanAPI {
     func deleteExercise(exercise: Exercise, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ndeleteExercise")
         
-        let path = "exercises/\(exercise.id!)"
+        let path = Const.Exercise.PathWithID(exercise.id!)
         
         taskForDELETEMethod(path) { (results, error) in
             
@@ -173,11 +173,11 @@ extension SpartanAPI {
     
     func useResponseDataToMakeExercise(result: AnyObject) -> Exercise? {
         
-        let id = result["id"] as? Int
-        let name = result["name"] as? String
-        let bodyRegion = result["bodyRegion"] as? String
-        let createdAt = result["created_at"] as? String
-        let updatedAt = result["updated_at"] as? String
+        let id = result[Const.Exercise.Key.id] as? Int
+        let name = result[Const.Exercise.Key.name] as? String
+        let bodyRegion = result[Const.Exercise.Key.bodyRegion] as? String
+        let createdAt = result[Const.Exercise.Key.created_at] as? String
+        let updatedAt = result[Const.Exercise.Key.updated_at] as? String
         
         if let id = id, let name = name, let bodyRegion = bodyRegion,
             let createdAt = createdAt, let updatedAt = updatedAt {

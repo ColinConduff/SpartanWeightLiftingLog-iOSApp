@@ -45,7 +45,7 @@ class SelectWorkoutTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "SelectWorkoutTableViewCell"
+        let cellIdentifier = Const.Storyboard.SelectWorkoutTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SelectWorkoutTableViewCell
         
         // Fetches the appropriate workout for the data source layout.
@@ -59,7 +59,7 @@ class SelectWorkoutTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowSelectExerciseList" {
+        if segue.identifier == Const.Storyboard.ShowSelectExerciseList {
             let selectExerciseTableViewController = segue.destinationViewController as! SelectExerciseTableViewController
             
             // Get the cell that generated this segue.

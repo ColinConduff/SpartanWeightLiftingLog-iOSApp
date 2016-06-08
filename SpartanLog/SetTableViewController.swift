@@ -46,7 +46,7 @@ class SetTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "SetTableViewCell"
+        let cellIdentifier = Const.Storyboard.SetTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SetTableViewCell
         
         // Fetches the appropriate set for the data source layout.
@@ -63,7 +63,7 @@ class SetTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowSetDetail" {
+        if segue.identifier == Const.Storyboard.ShowSetDetail {
             let setDetailViewController = segue.destinationViewController as! SetDetailViewController
             
             // Get the cell that generated this segue.

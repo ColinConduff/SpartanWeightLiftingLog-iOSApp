@@ -12,7 +12,7 @@ extension SpartanAPI {
     func getGroups(completionHandler: (result: [Group]?, error: NSError?) -> Void) {
         print("\ngetGroups")
         
-        let path = "groups"
+        let path = Const.Group.Path
         
         /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
@@ -46,7 +46,7 @@ extension SpartanAPI {
     func getGroup(group: Group, completionHandler: (result: Group?, error: NSError?) -> Void) {
         print("\ngetGroup")
         
-        let path = "groups/\(group.id!)"
+        let path = Const.Group.PathWithID(group.id!)
         
         /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
@@ -90,7 +90,7 @@ extension SpartanAPI {
     func createGroup(group: Group, completionHandler: (result: Group?, error: NSError?) -> Void)  {
         print("\ncreateGroup")
         
-        let path = "groups"
+        let path = Const.Group.Path
         
         let jsonBodyDictionary = [
             "name": group.name
@@ -131,7 +131,7 @@ extension SpartanAPI {
     func updateGroup(group: Group, completionHandler: (result: Group?, error: NSError?) -> Void)  {
         print("\nupdateGroup")
         
-        let path = "groups/\(group.id!)"
+        let path = Const.Group.PathWithID(group.id!)
         
         let jsonBodyDictionary = [
             "name": group.name
@@ -172,7 +172,7 @@ extension SpartanAPI {
     func deleteGroup(group: Group, completionHandler: (result: AnyObject?, error: NSError?) -> Void)  {
         print("\ndeleteGroup")
         
-        let path = "groups/\(group.id!)"
+        let path = Const.Group.PathWithID(group.id!)
         
         taskForDELETEMethod(path) { (results, error) in
             
@@ -189,7 +189,7 @@ extension SpartanAPI {
     func attachWorkout(group: Group, workout: Workout, completionHandler: (result: Group?, error: NSError?) -> Void)  {
         print("\nattachWorkout")
         
-        let path = "groups/\(group.id!)/attach"
+        let path = Const.Group.PathWithIDAndAttach(group.id!)
         
         let jsonBodyDictionary = [
             "workoutID": workout.id!
@@ -219,7 +219,7 @@ extension SpartanAPI {
     func detachWorkout(group: Group, workout: Workout, completionHandler: (result: Group?, error: NSError?) -> Void)  {
         print("\ndetachWorkout")
         
-        let path = "groups/\(group.id!)/detach"
+        let path = Const.Group.PathWithIDAndDetach(group.id!)
         
         let jsonBodyDictionary = [
             "workoutID": workout.id!
@@ -250,10 +250,10 @@ extension SpartanAPI {
     
     func useResponseDataToMakeGroup(result: AnyObject) -> Group? {
         
-        let id = result["id"] as? Int
-        let name = result["name"] as? String
-        let createdAt = result["created_at"] as? String
-        let updatedAt = result["updated_at"] as? String
+        let id = result[Const.Group.Key.id] as? Int
+        let name = result[Const.Group.Key.name] as? String
+        let createdAt = result[Const.Group.Key.created_at] as? String
+        let updatedAt = result[Const.Group.Key.updated_at] as? String
         
         if let id = id, let name = name,
             let createdAt = createdAt, let updatedAt = updatedAt {

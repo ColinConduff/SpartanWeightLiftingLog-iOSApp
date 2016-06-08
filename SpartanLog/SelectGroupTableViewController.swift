@@ -41,7 +41,7 @@ class SelectGroupTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "SelectGroupTableViewCell"
+        let cellIdentifier = Const.Storyboard.SelectGroupTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SelectGroupTableViewCell
         
         // Fetches the appropriate group for the data source layout.
@@ -55,7 +55,7 @@ class SelectGroupTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowSelectWorkoutList" {
+        if segue.identifier == Const.Storyboard.ShowSelectWorkoutList {
             let selectWorkoutTableViewController = segue.destinationViewController as! SelectWorkoutTableViewController
             
             // Get the cell that generated this segue.

@@ -43,7 +43,7 @@ class GroupTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "GroupTableViewCell"
+        let cellIdentifier = Const.Storyboard.GroupTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! GroupTableViewCell
         
         // Fetches the appropriate group for the data source layout.
@@ -71,7 +71,7 @@ class GroupTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowGroupDetail" {
+        if segue.identifier == Const.Storyboard.ShowGroupDetail {
             let groupDetailViewController = segue.destinationViewController as! GroupDetailViewController
             
             // Get the cell that generated this segue.
