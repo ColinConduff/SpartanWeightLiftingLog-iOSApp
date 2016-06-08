@@ -36,7 +36,7 @@ class SpartanAPI : NSObject {
             
             func sendError(error: String) {
                 print(error)
-                print("Status Code: \(response as? NSHTTPURLResponse)?.statusCode)")
+                print("Status Code: \((response as? NSHTTPURLResponse)!.statusCode)")
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForGET(result: nil, error: NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
@@ -87,8 +87,9 @@ class SpartanAPI : NSObject {
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
             func sendError(error: String) {
-                print(error)
-                print("Status Code: \(response as? NSHTTPURLResponse)?.statusCode)")
+                let statusCode = (response as? NSHTTPURLResponse)!.statusCode
+                print("Status Code: \(statusCode)")
+                
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForPOST(result: nil, error: NSError(domain: "taskForPostMethod", code: 1, userInfo: userInfo))
             }
@@ -144,7 +145,7 @@ class SpartanAPI : NSObject {
             
             func sendError(error: String) {
                 print(error)
-                print("Status Code: \(response as? NSHTTPURLResponse)?.statusCode)")
+                print("Status Code: \((response as? NSHTTPURLResponse)!.statusCode)")
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForPUT(result: nil, error: NSError(domain: "taskForPUTMethod", code: 1, userInfo: userInfo))
             }
@@ -193,7 +194,7 @@ class SpartanAPI : NSObject {
             
             func sendError(error: String) {
                 print(error)
-                print("Status Code: \(response as? NSHTTPURLResponse)?.statusCode)")
+                print("Status Code: \((response as? NSHTTPURLResponse)!.statusCode)")
                 let userInfo = [NSLocalizedDescriptionKey : error]
                 completionHandlerForDELETE(result: nil, error: NSError(domain: "taskForDELETEMethod", code: 1, userInfo: userInfo))
             }

@@ -52,13 +52,18 @@
                                     <action selector="registerButtonPressed:" destination="kSW-PF-Y4v" eventType="touchUpInside" id="v81-WE-Ev8"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QO7-O6-hog">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Yx5-Qg-jOb" firstAttribute="leading" secondItem="6ui-sE-ecH" secondAttribute="leading" id="42d-ia-tLH"/>
                             <constraint firstItem="Yx5-Qg-jOb" firstAttribute="trailing" secondItem="6ui-sE-ecH" secondAttribute="trailing" id="8gB-VK-E0V"/>
                             <constraint firstItem="6ui-sE-ecH" firstAttribute="top" secondItem="Yx5-Qg-jOb" secondAttribute="bottom" constant="8" symbolic="YES" id="Ihz-mS-Qd8"/>
+                            <constraint firstItem="QO7-O6-hog" firstAttribute="centerY" secondItem="RJA-gP-G9j" secondAttribute="centerY" id="Ikx-Ya-fhV"/>
                             <constraint firstItem="Yx5-Qg-jOb" firstAttribute="top" secondItem="dyY-mv-ddh" secondAttribute="bottom" constant="8" symbolic="YES" id="PDp-X3-cLT"/>
+                            <constraint firstItem="QO7-O6-hog" firstAttribute="centerX" secondItem="Cgk-Yl-1Yz" secondAttribute="centerX" id="REr-3c-3th"/>
                             <constraint firstItem="HOJ-wS-Hh7" firstAttribute="top" secondItem="6ui-sE-ecH" secondAttribute="bottom" constant="8" symbolic="YES" id="TA1-9o-dGD"/>
                             <constraint firstItem="HOJ-wS-Hh7" firstAttribute="leading" secondItem="VcL-xQ-ZXq" secondAttribute="leading" id="UY9-Av-GYo"/>
                             <constraint firstItem="VcL-xQ-ZXq" firstAttribute="top" secondItem="HOJ-wS-Hh7" secondAttribute="bottom" constant="8" symbolic="YES" id="nRE-9g-gpO"/>
@@ -75,6 +80,7 @@
                     <tabBarItem key="tabBarItem" title="Register" id="XKe-R4-AqB"/>
                     <navigationItem key="navigationItem" id="HV9-69-gww"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="QO7-O6-hog" id="0t0-kT-OeU"/>
                         <outlet property="emailTextField" destination="HOJ-wS-Hh7" id="Zyw-4C-DxS"/>
                         <outlet property="nameTextField" destination="6ui-sE-ecH" id="D6H-vy-e6s"/>
                         <outlet property="passwordTextField" destination="VcL-xQ-ZXq" id="NCF-83-hgl"/>
@@ -88,7 +94,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SpartanLog" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SpartanLog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -131,9 +137,13 @@
                                     <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7YG-bo-D5U"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aVm-g2-eOX">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aVm-g2-eOX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0oM-qQ-FrI"/>
                             <constraint firstItem="wOe-Ir-ctq" firstAttribute="leading" secondItem="z07-ad-Pj1" secondAttribute="leading" id="0wo-v7-Wqh"/>
                             <constraint firstItem="2NN-6R-LgX" firstAttribute="trailing" secondItem="wOe-Ir-ctq" secondAttribute="trailing" id="1Sc-Bj-QdF"/>
                             <constraint firstItem="kVr-1P-imb" firstAttribute="trailing" secondItem="z07-ad-Pj1" secondAttribute="trailing" id="5K9-5L-TY5"/>
@@ -144,6 +154,7 @@
                             <constraint firstItem="2NN-6R-LgX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Uft-bT-9Co"/>
                             <constraint firstItem="wOe-Ir-ctq" firstAttribute="trailing" secondItem="z07-ad-Pj1" secondAttribute="trailing" id="bwh-2w-XbU"/>
                             <constraint firstItem="z07-ad-Pj1" firstAttribute="top" secondItem="wOe-Ir-ctq" secondAttribute="bottom" constant="8" symbolic="YES" id="eRx-YN-fjW"/>
+                            <constraint firstItem="aVm-g2-eOX" firstAttribute="centerX" secondItem="kVr-1P-imb" secondAttribute="centerX" id="ebp-NX-Hkb"/>
                             <constraint firstItem="wOe-Ir-ctq" firstAttribute="top" secondItem="2NN-6R-LgX" secondAttribute="bottom" constant="8" symbolic="YES" id="gtV-Te-uLC"/>
                             <constraint firstItem="kVr-1P-imb" firstAttribute="leading" secondItem="z07-ad-Pj1" secondAttribute="leading" id="hG2-Nr-T6z"/>
                             <constraint firstItem="2NN-6R-LgX" firstAttribute="trailing" secondItem="wOe-Ir-ctq" secondAttribute="trailing" id="pZ5-mL-EQC"/>
@@ -158,6 +169,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Login" id="IgX-c7-zNY"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="aVm-g2-eOX" id="F9I-5J-AXo"/>
                         <outlet property="emailTextField" destination="wOe-Ir-ctq" id="BUO-fp-rff"/>
                         <outlet property="loginButton" destination="kVr-1P-imb" id="w39-AP-ziL"/>
                         <outlet property="passwordTextField" destination="z07-ad-Pj1" id="3Eq-k6-EMg"/>
@@ -208,7 +220,7 @@
         <!--Workouts-->
         <scene sceneID="0bh-x5-p3g">
             <objects>
-                <tableViewController id="5v8-w4-3Em" customClass="WorkoutTableViewController" customModule="SpartanLog" sceneMemberID="viewController">
+                <tableViewController id="5v8-w4-3Em" customClass="WorkoutTableViewController" customModule="SpartanLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ddy-Rd-cLR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -960,7 +972,7 @@
                                 </constraints>
                             </stackView>
                             <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVZ-gb-GpA">
-                                <rect key="frame" x="20" y="562" width="560" height="30"/>
+                                <rect key="frame" x="20" y="518" width="560" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.29695092610000001" blue="0.27143549309999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -1343,8 +1355,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="MsD-L0-3Kx"/>
-        <segue reference="yV5-RW-7DS"/>
-        <segue reference="adi-hL-awW"/>
-        <segue reference="Xpt-jI-1Jt"/>
+        <segue reference="KX5-KZ-NWn"/>
+        <segue reference="97a-RI-qO5"/>
+        <segue reference="Zcw-eH-qaV"/>
     </inferredMetricsTieBreakers>
 </document>

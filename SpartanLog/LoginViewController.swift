@@ -17,6 +17,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Life Cycle
     
@@ -64,6 +65,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Actions
     
     @IBAction func loginPressed(sender: AnyObject) {
+        
+        self.startActivityIndicator()
+        
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
@@ -75,6 +79,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     self.loginFailed()
                 }
+                
+                self.stopActivityIndicator()
             }
         }
     }
@@ -88,5 +94,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.passwordTextField.text = ""
         self.loginButton.enabled = false
         self.loginButton.setTitle("Please try again", forState: .Disabled)
+    }
+    
+    // MARK: Helper Functions
+    
+    func startActivityIndicator() {
+        activityIndicator.alpha = 1.0
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicator.alpha = 0.0
+        activityIndicator.stopAnimating()
     }
 }
