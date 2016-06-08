@@ -14,25 +14,22 @@ extension SpartanAPI {
         
         let path = "workouts"
         
-        /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
-            } else {
                 
+            } else {
                 if let results = results["data"] as? [[String:AnyObject]] {
                     
                     var workouts = [Workout]()
                     
                     for result in results {
-                        let id = result["id"] as? Int
-                        let name = result["name"] as? String
-                        let createdAt = result["created_at"] as? String
-                        let updatedAt = result["updated_at"] as? String
+                        let workout = self.useResponseDataToMakeWorkout(result)
                         
-                        workouts.append(Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        if let workout = workout {
+                            workouts.append(workout)
+                        }
                     }
                     
                     completionHandler(result: workouts, error: nil)
@@ -49,10 +46,8 @@ extension SpartanAPI {
         
         let path = "workouts/\(workout.id!)"
         
-        /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
@@ -63,22 +58,21 @@ extension SpartanAPI {
                     if let results = results["exercises"] as? [[String:AnyObject]] {
                         
                         for result in results {
-                            let id = result["id"] as? Int
-                            let name = result["name"] as? String
-                            let bodyRegion = result["bodyRegion"] as? String
-                            let createdAt = result["created_at"] as? String
-                            let updatedAt = result["updated_at"] as? String
+                            let exercise = self.useResponseDataToMakeExercise(result)
                             
-                            exercises.append(Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                            if let exercise = exercise {
+                                exercises.append(exercise)
+                            }
                         }
                     }
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let workout = self.useResponseDataToMakeWorkout(results)
                     
-                    let workout = Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!, exercises: exercises)
+                    if workout == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                    }
+                    
+                    workout!.exercises = exercises
                     
                     completionHandler(result: workout, error: nil)
                     
@@ -105,22 +99,19 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
                 
                 if let results = results as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let workout = self.useResponseDataToMakeWorkout(results)
                     
-                    let workout = Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if workout == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                    }
                     
                     completionHandler(result: workout, error: nil)
                     
@@ -147,22 +138,19 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPUTMethod(path, parameters: nil, jsonBody: jsonBody!) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
-            } else {
                 
+            } else {
                 if let results = results["workout"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let workout = self.useResponseDataToMakeWorkout(results)
                     
-                    let workout = Workout(id: id!, name: name!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if workout == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making workout", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making workout"]))
+                    }
                     
                     completionHandler(result: workout, error: nil)
                     
@@ -180,7 +168,6 @@ extension SpartanAPI {
         
         taskForDELETEMethod(path) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 
@@ -206,10 +193,8 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 
@@ -236,10 +221,8 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 
@@ -247,6 +230,23 @@ extension SpartanAPI {
                 completionHandler(result: nil, error: nil)
                 
             }
+        }
+    }
+    
+    // MARK: Helper Functions
+    
+    func useResponseDataToMakeWorkout(result: AnyObject) -> Workout? {
+        
+        let id = result["id"] as? Int
+        let name = result["name"] as? String
+        let createdAt = result["created_at"] as? String
+        let updatedAt = result["updated_at"] as? String
+        
+        if let id = id, let name = name,
+            let createdAt = createdAt, let updatedAt = updatedAt {
+            return Workout(id: id, name: name, createdAt: createdAt, updatedAt: updatedAt)
+        } else {
+            return nil
         }
     }
 }

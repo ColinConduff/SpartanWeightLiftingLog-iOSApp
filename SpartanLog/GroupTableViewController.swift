@@ -102,17 +102,17 @@ class GroupTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getGroups() { (groups, error) in
             
-            if let groups = groups {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let groups = groups {
                     self.groups = groups
                     self.tableView.reloadData()
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -121,18 +121,18 @@ class GroupTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().createGroup(group) { (group, error) in
             
-            if let group = group {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let group = group {
                     let newIndexPath = NSIndexPath(forRow: self.groups.count, inSection: 0)
                     self.groups.append(group)
                     self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -141,17 +141,17 @@ class GroupTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().updateGroup(group) { (group, error) in
             
-            if let group = group {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let group = group {
                     self.groups[indexPath.row] = group
                     self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -160,19 +160,19 @@ class GroupTableViewController: UITableViewController {
         
         let group = groups[indexPath.row]
         
-        SpartanAPI.sharedInstance().deleteGroup(group) {
-            (groups, error) in
-            if let error = error {
-                print(error)
-                
-            } else {
-                performUIUpdatesOnMain {
+        SpartanAPI.sharedInstance().deleteGroup(group) { (groups, error) in
+            
+            performUIUpdatesOnMain {
+                if let error = error {
+                    print(error)
+                    
+                } else {
                     self.groups.removeAtIndex(indexPath.row)
                     self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 }
+                
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     

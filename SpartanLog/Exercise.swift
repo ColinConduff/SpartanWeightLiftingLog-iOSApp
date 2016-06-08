@@ -29,7 +29,7 @@ class Exercise: NSObject {
         
         super.init()
         
-        // Initialization should fail if there is no name or if the rating is negative.
+        // Initialization should fail if there is no name or bodyRegion.
         if name.isEmpty || bodyRegion.isEmpty {
             return nil
         }

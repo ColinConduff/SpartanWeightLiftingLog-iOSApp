@@ -9,17 +9,17 @@
 import Foundation
 
 extension SpartanAPI {
+    
     func getExercises(completionHandler: (result: [Exercise]?, error: NSError?) -> Void) {
         print("\ngetExercises")
         
         let path = "exercises"
         
-        /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
+                
             } else {
                 
                 if let results = results["data"] as? [[String:AnyObject]] {
@@ -27,19 +27,19 @@ extension SpartanAPI {
                     var exercises = [Exercise]()
                     
                     for result in results {
-                        let id = result["id"] as? Int
-                        let name = result["name"] as? String
-                        let bodyRegion = result["bodyRegion"] as? String
-                        let createdAt = result["created_at"] as? String
-                        let updatedAt = result["updated_at"] as? String
+                        let exercise = self.useResponseDataToMakeExercise(result)
                         
-                        exercises.append(Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)!)
+                        if let exercise = exercise {
+                            exercises.append(exercise)
+                        } else {
+                            completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                        }
                     }
                     
                     completionHandler(result: exercises, error: nil)
                     
                 } else {
-                    completionHandler(result: nil, error: NSError(domain: "getFavoriteMovies parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getFavoriteMovies"]))
+                    completionHandler(result: nil, error: NSError(domain: "getExercises parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getExercises"]))
                 }
             }
         }
@@ -50,28 +50,24 @@ extension SpartanAPI {
         
         let path = "exercises/\(exercise.id!)"
         
-        /* 2. Make the request */
         taskForGETMethod(path, parameters: nil) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
                 
                 if let results = results["exercise"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let bodyRegion = results["bodyRegion"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let exercise = self.useResponseDataToMakeExercise(results)
                     
-                    let exercise = Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if exercise == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                    }
                     
                     completionHandler(result: exercise, error: nil)
                     
                 } else {
-                    completionHandler(result: nil, error: NSError(domain: "getFavoriteMovies parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getFavoriteMovies"]))
+                    completionHandler(result: nil, error: NSError(domain: "getExercise parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getExercise"]))
                 }
             }
         }
@@ -94,23 +90,19 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPOSTMethod(path, parameters: nil, jsonBody: jsonBody!, withToken: true) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
                 
                 if let results = results as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let bodyRegion = results["bodyRegion"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let exercise = self.useResponseDataToMakeExercise(results)
                     
-                    let exercise = Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if exercise == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                    }
                     
                     completionHandler(result: exercise, error: nil)
                     
@@ -138,23 +130,19 @@ extension SpartanAPI {
             print(error)
         }
         
-        /* 2. Make the request */
         taskForPUTMethod(path, parameters: nil, jsonBody: jsonBody!) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
             } else {
                 
                 if let results = results["exercise"] as? [String:AnyObject] {
                     
-                    let id = results["id"] as? Int
-                    let name = results["name"] as? String
-                    let bodyRegion = results["bodyRegion"] as? String
-                    let createdAt = results["created_at"] as? String
-                    let updatedAt = results["updated_at"] as? String
+                    let exercise = self.useResponseDataToMakeExercise(results)
                     
-                    let exercise = Exercise(id: id!, name: name!, bodyRegion: bodyRegion!, createdAt: createdAt!, updatedAt: updatedAt!)
+                    if exercise == nil {
+                        completionHandler(result: nil, error: NSError(domain: "Nil found when making exercise", code: 0, userInfo: [NSLocalizedDescriptionKey: "Nil found when making exercise"]))
+                    }
                     
                     completionHandler(result: exercise, error: nil)
                     
@@ -172,13 +160,30 @@ extension SpartanAPI {
         
         taskForDELETEMethod(path) { (results, error) in
             
-            /* 3. Send the desired value(s) to completion handler */
             if let error = error {
                 completionHandler(result: nil, error: error)
                 
             } else {
                 completionHandler(result: results, error: nil)
             }
+        }
+    }
+    
+    // MARK: Helper Functions
+    
+    func useResponseDataToMakeExercise(result: AnyObject) -> Exercise? {
+        
+        let id = result["id"] as? Int
+        let name = result["name"] as? String
+        let bodyRegion = result["bodyRegion"] as? String
+        let createdAt = result["created_at"] as? String
+        let updatedAt = result["updated_at"] as? String
+        
+        if let id = id, let name = name, let bodyRegion = bodyRegion,
+            let createdAt = createdAt, let updatedAt = updatedAt {
+            return Exercise(id: id, name: name, bodyRegion: bodyRegion, createdAt: createdAt, updatedAt: updatedAt)
+        } else {
+            return nil
         }
     }
 }

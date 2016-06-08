@@ -16,6 +16,8 @@ class Workout: NSObject {
     var name: String
     var createdAt: String?
     var updatedAt: String?
+    
+    // the associated exercises are added when getWorkout() is called
     var exercises: [Exercise]?
     
     // MARK: Initialization
@@ -29,7 +31,7 @@ class Workout: NSObject {
         
         super.init()
         
-        // Initialization should fail if there is no name or if the rating is negative.
+        // Initialization should fail if there is no name.
         if name.isEmpty {
             return nil
         }

@@ -87,22 +87,12 @@ class SetTableViewController: UITableViewController {
         }
     }
     
-    // MARK: Timer Functions
+    // MARK: Timer
     
     @IBOutlet weak var timerDisplay: UIBarButtonItem!
     var timer: NSTimer?
     var timerForSeconds: NSTimer?
     var secondCounter: Int?
-    
-    func timerFinished() {
-        timerDisplay.title = "Timer"
-        
-        timer?.invalidate()
-        timer = nil
-        
-        timerForSeconds?.invalidate()
-        timerForSeconds = nil
-    }
     
     func displaySeconds() {
         secondCounter! -= 1
@@ -128,23 +118,17 @@ class SetTableViewController: UITableViewController {
         timerDisplay.title = "\(minutesDisplay)\(secondsDisplay)"
     }
     
-    @IBAction func startOrStopTimer(sender: UIBarButtonItem) {
+    @IBAction func startTimerOrStopTimerIfNil(sender: UIBarButtonItem) {
         
         if timer != nil {
-            timerDisplay.title = "Timer"
-            
-            timer?.invalidate()
-            timer = nil
-            
-            timerForSeconds?.invalidate()
-            timerForSeconds = nil
+            clearTimers()
             
             return
         }
         
         let alertController = UIAlertController(
-            title: "UIAlertController",
-            message: "This is UIAlertController",
+            title: "Select a time",
+            message: nil,
             preferredStyle: .ActionSheet)
         
         let thirtySecondsTimer = UIAlertAction(
@@ -157,7 +141,7 @@ class SetTableViewController: UITableViewController {
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(
                     30,
                     target: self,
-                    selector: #selector(self.timerFinished),
+                    selector: #selector(self.clearTimers),
                     userInfo: nil,
                     repeats: false)
                 
@@ -179,7 +163,7 @@ class SetTableViewController: UITableViewController {
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(
                     60,
                     target: self,
-                    selector: #selector(self.timerFinished),
+                    selector: #selector(self.clearTimers),
                     userInfo: nil,
                     repeats: false)
                 
@@ -201,7 +185,7 @@ class SetTableViewController: UITableViewController {
                 self.timer = NSTimer.scheduledTimerWithTimeInterval(
                     120,
                     target: self,
-                    selector: #selector(self.timerFinished),
+                    selector: #selector(self.clearTimers),
                     userInfo: nil,
                     repeats: false)
                 
@@ -229,6 +213,16 @@ class SetTableViewController: UITableViewController {
             completion: nil)
     }
     
+    func clearTimers() {
+        timerDisplay.title = "Timer"
+        
+        timer?.invalidate()
+        timer = nil
+        
+        timerForSeconds?.invalidate()
+        timerForSeconds = nil
+    }
+    
     
     // MARK:  CRUD Operations
     
@@ -237,83 +231,44 @@ class SetTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getSets(workout, exercise: exercise) { (sets, error) in
             
-            if let sets = sets {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                
+                if let sets = sets {
                     self.sets = sets
                     self.tableView.reloadData()
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
     func createSet(set: Set) {
-        self.startActivityIndicator()
-        
+
         set.workoutID = self.workout?.id
         set.exerciseID = self.exercise?.id
         
-        SpartanAPI.sharedInstance().createSet(set) { (set, error) in
+        SpartanAPI.sharedInstance().createSet(set) { (result, error) in
             
-            if let set = set {
-                performUIUpdatesOnMain {
-                    let newIndexPath = NSIndexPath(forRow: self.sets.count, inSection: 0)
-                    self.sets.append(set)
-                    self.tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-                }
-                
-            } else {
+            if let error = error {
                 print(error)
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
     func updateSet(set: Set, indexPath: NSIndexPath) {
-        self.startActivityIndicator()
         
         set.workoutID = self.workout?.id
         set.exerciseID = self.exercise?.id
         
-        SpartanAPI.sharedInstance().updateSet(set) { (set, error) in
+        SpartanAPI.sharedInstance().updateSet(set) { (result, error) in
             
-            if let set = set {
-                performUIUpdatesOnMain {
-                    self.sets[indexPath.row] = set
-                    self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-                }
-                
-            } else {
-                print(error)
-            }
-            
-            self.stopActivityIndicator()
-        }
-    }
-    
-    func deleteSet(indexPath: NSIndexPath) {
-        self.startActivityIndicator()
-        
-        let set = sets[indexPath.row]
-        
-        SpartanAPI.sharedInstance().deleteSet(set) {
-            (sets, error) in
             if let error = error {
                 print(error)
-                
-            } else {
-                performUIUpdatesOnMain {
-                    self.sets.removeAtIndex(indexPath.row)
-                    self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                }
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
