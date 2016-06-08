@@ -101,6 +101,7 @@ class AttachWorkoutTableViewController: UITableViewController {
     @IBAction func submitAttachAndDetachWorkouts(sender: UIBarButtonItem) {
         attachWorkouts()
         detachWorkouts()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK:  CRUD Operations
@@ -153,45 +154,17 @@ class AttachWorkoutTableViewController: UITableViewController {
     }
     
     func attachWorkouts() {
-        self.startActivityIndicator()
-        
         for workout in workoutsToAttach {
             if !originallyChecked[workout]! {
-                SpartanAPI.sharedInstance().attachWorkout(group!, workout: workout) { (result, error) in
-                    
-                    performUIUpdatesOnMain {
-                        if let error = error {
-                            print(error)
-                            
-                        } else {
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                        }
-                    }
-                    
-                    self.stopActivityIndicator()
-                }
+                SpartanAPI.sharedInstance().attachWorkout(group!, workout: workout) {_,_ in}
             }
         }
     }
     
     func detachWorkouts() {
-        self.startActivityIndicator()
-        
         for workout in workoutsToDetach {
             if originallyChecked[workout]! {
-                SpartanAPI.sharedInstance().detachWorkout(group!, workout: workout) { (result, error) in
-                    
-                    performUIUpdatesOnMain {
-                        if let error = error {
-                            print(error)
-                            
-                        } else {
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                        }
-                    }
-                    
-                    self.stopActivityIndicator()
-                }
+                SpartanAPI.sharedInstance().detachWorkout(group!, workout: workout) {_,_ in}
             }
         }
     }
@@ -218,12 +191,10 @@ class AttachWorkoutTableViewController: UITableViewController {
     }
     
     func startActivityIndicator() {
-        activityIndicator.alpha = 1.0
         activityIndicator.startAnimating()
     }
     
     func stopActivityIndicator() {
-        activityIndicator.alpha = 0.0
         activityIndicator.stopAnimating()
     }
 }

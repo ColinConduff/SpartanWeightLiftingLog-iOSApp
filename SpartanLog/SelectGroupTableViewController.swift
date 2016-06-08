@@ -91,12 +91,10 @@ class SelectGroupTableViewController: UITableViewController {
     // MARK: Helper Functions
     
     func startActivityIndicator() {
-        activityIndicator.alpha = 1.0
         activityIndicator.startAnimating()
     }
     
     func stopActivityIndicator() {
-        activityIndicator.alpha = 0.0
         activityIndicator.stopAnimating()
     }
 }

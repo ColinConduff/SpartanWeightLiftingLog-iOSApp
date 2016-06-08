@@ -101,6 +101,7 @@ class AttachExerciseTableViewController: UITableViewController {
     @IBAction func submitAttachAndDetachExercises(sender: UIBarButtonItem) {
         attachExercises()
         detachExercises()
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK:  CRUD Operations
@@ -153,45 +154,19 @@ class AttachExerciseTableViewController: UITableViewController {
     }
     
     func attachExercises() {
-        self.startActivityIndicator()
-        
         for exercise in exercisesToAttach {
             if !originallyChecked[exercise]! {
-                SpartanAPI.sharedInstance().attachExercise(workout!, exercise: exercise) { (result, error) in
-                    
-                    performUIUpdatesOnMain {
-                        if let error = error {
-                            print(error)
-                            
-                        } else {
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                        }
-                    }
-                    
-                    self.stopActivityIndicator()
-                }
+                SpartanAPI.sharedInstance().attachExercise(workout!, exercise: exercise) {_,_ in}
             }
         }
     }
     
     func detachExercises() {
-        self.startActivityIndicator()
+        //self.startActivityIndicator()
         
         for exercise in exercisesToDetach {
             if originallyChecked[exercise]! {
-                SpartanAPI.sharedInstance().detachExercise(workout!, exercise: exercise) { (result, error) in
-                    
-                    performUIUpdatesOnMain {
-                        if let error = error {
-                            print(error)
-                            
-                        } else {
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                        }
-                    }
-                    
-                    self.stopActivityIndicator()
-                }
+                SpartanAPI.sharedInstance().detachExercise(workout!, exercise: exercise) {_,_ in}
             }
         }
     }
@@ -218,12 +193,10 @@ class AttachExerciseTableViewController: UITableViewController {
     }
     
     func startActivityIndicator() {
-        activityIndicator.alpha = 1.0
         activityIndicator.startAnimating()
     }
     
     func stopActivityIndicator() {
-        activityIndicator.alpha = 0.0
         activityIndicator.stopAnimating()
     }
 }
