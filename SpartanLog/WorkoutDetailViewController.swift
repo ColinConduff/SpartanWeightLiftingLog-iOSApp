@@ -14,6 +14,7 @@ class WorkoutDetailViewController: UIViewController, UITextFieldDelegate, UINavi
     
     @IBOutlet weak var workoutNameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var AttachExercisesContainerView: UIView!
     
     /*
      This value is either passed by `workoutTableViewController` in `prepareForSegue(_:sender:)`
@@ -25,12 +26,16 @@ class WorkoutDetailViewController: UIViewController, UITextFieldDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AttachExercisesContainerView.hidden = true
+        
         // Handle the text field’s user input through delegate callbacks.
         workoutNameTextField.delegate = self
         
         // Set up views if editing an existing workout.
         if let workout = workout {
             updating = true
+            AttachExercisesContainerView.hidden = false
+            
             navigationItem.title = workout.name
             workoutNameTextField.text   = workout.name
         }
@@ -65,7 +70,7 @@ class WorkoutDetailViewController: UIViewController, UITextFieldDelegate, UINavi
     
     // MARK: Navigation
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    @IBAction func back(sender: UIBarButtonItem) {
         if !updating {
             dismissViewControllerAnimated(true, completion: nil)
         } else {

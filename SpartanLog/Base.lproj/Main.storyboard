@@ -435,23 +435,23 @@
             <objects>
                 <tableViewController id="v5L-nF-P0f" customClass="AttachWorkoutTableViewController" customModule="SpartanLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dar-rV-NmG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="433"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="IYh-jL-Rha">
-                            <rect key="frame" x="0.0" y="136" width="600" height="20"/>
+                            <rect key="frame" x="0.0" y="116" width="560" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttachWorkoutTableViewCell" textLabel="ElS-Ha-pMA" style="IBUITableViewCellStyleDefault" id="xtA-Ms-FMQ" customClass="AttachWorkoutTableViewCell" customModule="SpartanLog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="560" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtA-Ms-FMQ" id="Lpp-3z-6rz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ElS-Ha-pMA">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="530" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -470,11 +470,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Workouts to Group" id="gTc-HH-uzX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TGh-uv-UI2">
-                            <connections>
-                                <action selector="cancel:" destination="v5L-nF-P0f" id="cQA-Cj-USe"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="S5A-BK-vAv">
                             <connections>
                                 <action selector="submitAttachAndDetachWorkouts:" destination="v5L-nF-P0f" id="TvA-Uc-AKy"/>
@@ -487,7 +482,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29x-9j-HeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4009" y="405"/>
+            <point key="canvasLocation" x="4027" y="506.5"/>
         </scene>
         <!--Group-->
         <scene sceneID="2qk-Te-Ddv">
@@ -506,28 +501,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXv-of-9I7">
-                                <rect key="frame" x="20" y="110" width="560" height="30"/>
-                                <state key="normal" title="Add Workouts to this Group"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aT7-Wn-AI0">
+                                <rect key="frame" x="20" y="110" width="560" height="433"/>
                                 <connections>
-                                    <segue destination="e36-VV-f4Y" kind="show" identifier="ShowAttachWorkoutTable" id="FXv-kT-EbU"/>
+                                    <segue destination="e36-VV-f4Y" kind="embed" identifier="ShowAttachWorkoutTable" id="khT-0N-DxX"/>
                                 </connections>
-                            </button>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="top" secondItem="t0a-sE-6BK" secondAttribute="bottom" constant="8" symbolic="YES" id="9MB-HO-11j"/>
-                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="trailing" secondItem="JXv-of-9I7" secondAttribute="trailing" id="IEZ-sx-Ahw"/>
-                            <constraint firstItem="JXv-of-9I7" firstAttribute="top" secondItem="5IP-Ai-Gg5" secondAttribute="bottom" constant="8" symbolic="YES" id="IKU-3g-ehB"/>
-                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="trailing" secondItem="qEY-H6-zBk" secondAttribute="trailingMargin" id="Lzn-oi-u0B"/>
-                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="leading" secondItem="JXv-of-9I7" secondAttribute="leading" id="PFu-Zh-MOx"/>
-                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="leading" secondItem="qEY-H6-zBk" secondAttribute="leadingMargin" id="ZYa-ft-6f8"/>
+                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="leading" secondItem="aT7-Wn-AI0" secondAttribute="leading" id="3Gv-XU-yBY"/>
+                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="top" secondItem="t0a-sE-6BK" secondAttribute="bottom" constant="8" symbolic="YES" id="9XO-y5-hrA"/>
+                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="trailing" secondItem="aT7-Wn-AI0" secondAttribute="trailing" id="GP4-8H-gjU"/>
+                            <constraint firstItem="gNG-2y-Pfd" firstAttribute="top" secondItem="aT7-Wn-AI0" secondAttribute="bottom" constant="8" symbolic="YES" id="Z17-xz-49W"/>
+                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="leading" secondItem="qEY-H6-zBk" secondAttribute="leadingMargin" id="cfy-av-Vgz"/>
+                            <constraint firstItem="5IP-Ai-Gg5" firstAttribute="trailing" secondItem="qEY-H6-zBk" secondAttribute="trailingMargin" id="kYa-BN-9ua"/>
+                            <constraint firstItem="aT7-Wn-AI0" firstAttribute="top" secondItem="5IP-Ai-Gg5" secondAttribute="bottom" constant="8" symbolic="YES" id="lot-Mz-MvI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Group" id="2WU-Iv-Euh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="cBb-pq-XGh">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="cBb-pq-XGh">
                             <connections>
-                                <action selector="cancel:" destination="ThK-Pf-3sI" id="kng-8R-dSA"/>
+                                <action selector="back:" destination="ThK-Pf-3sI" id="heY-pb-kbv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="NjW-hg-SNM">
@@ -537,6 +532,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AttachWorkoutsContainerView" destination="aT7-Wn-AI0" id="0zs-yU-JUH"/>
                         <outlet property="groupNameTextField" destination="5IP-Ai-Gg5" id="80U-zP-4Iq"/>
                         <outlet property="saveButton" destination="NjW-hg-SNM" id="mLF-ds-RFf"/>
                     </connections>
@@ -1084,29 +1080,29 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhR-gg-pZt">
-                                <rect key="frame" x="20" y="110" width="560" height="30"/>
-                                <state key="normal" title="Add Exercises to this Workout"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9h-UA-wNU">
+                                <rect key="frame" x="20" y="110" width="560" height="438"/>
                                 <connections>
-                                    <segue destination="IHr-5x-Qrr" kind="show" identifier="ShowAttachExerciseTable" id="h4g-wj-2v9"/>
+                                    <segue destination="IHr-5x-Qrr" kind="embed" identifier="ShowAttachExerciseTable" id="Rpq-dX-YE4"/>
                                 </connections>
-                            </button>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fv4-lf-EvM" firstAttribute="trailing" secondItem="rhR-gg-pZt" secondAttribute="trailing" id="7Ba-Ja-60I"/>
-                            <constraint firstItem="fv4-lf-EvM" firstAttribute="leading" secondItem="6vV-4x-t4i" secondAttribute="leadingMargin" id="8n3-wC-AzT"/>
-                            <constraint firstItem="fv4-lf-EvM" firstAttribute="trailing" secondItem="6vV-4x-t4i" secondAttribute="trailingMargin" id="R96-18-bHr"/>
-                            <constraint firstItem="rhR-gg-pZt" firstAttribute="top" secondItem="fv4-lf-EvM" secondAttribute="bottom" constant="8" symbolic="YES" id="iyt-Sk-RId"/>
-                            <constraint firstItem="fv4-lf-EvM" firstAttribute="leading" secondItem="rhR-gg-pZt" secondAttribute="leading" id="kce-2v-XAh"/>
-                            <constraint firstItem="fv4-lf-EvM" firstAttribute="top" secondItem="ATw-KL-amv" secondAttribute="bottom" constant="8" symbolic="YES" id="xrv-n5-Uzm"/>
+                            <constraint firstItem="fv4-lf-EvM" firstAttribute="top" secondItem="ATw-KL-amv" secondAttribute="bottom" constant="8" symbolic="YES" id="9YF-Am-uSJ"/>
+                            <constraint firstItem="fv4-lf-EvM" firstAttribute="trailing" secondItem="6vV-4x-t4i" secondAttribute="trailingMargin" id="DFD-Xt-08O"/>
+                            <constraint firstItem="fv4-lf-EvM" firstAttribute="trailing" secondItem="A9h-UA-wNU" secondAttribute="trailing" id="ToI-f6-3rJ"/>
+                            <constraint firstItem="r40-Kq-aIa" firstAttribute="top" secondItem="A9h-UA-wNU" secondAttribute="bottom" constant="8" symbolic="YES" id="UTW-al-FX2"/>
+                            <constraint firstItem="fv4-lf-EvM" firstAttribute="leading" secondItem="6vV-4x-t4i" secondAttribute="leadingMargin" id="gPG-Xy-Qx6"/>
+                            <constraint firstItem="A9h-UA-wNU" firstAttribute="top" secondItem="fv4-lf-EvM" secondAttribute="bottom" constant="8" symbolic="YES" id="nKH-WP-5lB"/>
+                            <constraint firstItem="fv4-lf-EvM" firstAttribute="leading" secondItem="A9h-UA-wNU" secondAttribute="leading" id="yFR-mA-D84"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Workout" id="OX4-08-lHX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tMg-Xf-NnJ">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="tMg-Xf-NnJ">
                             <connections>
-                                <action selector="cancel:" destination="jbs-X1-UIi" id="TWM-jA-JQu"/>
+                                <action selector="back:" destination="jbs-X1-UIi" id="GNv-iW-PoE"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="eEe-Ew-CBs">
@@ -1117,6 +1113,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="AttachExercisesContainerView" destination="A9h-UA-wNU" id="mbI-J3-CVT"/>
                         <outlet property="saveButton" destination="eEe-Ew-CBs" id="YwK-XZ-2y9"/>
                         <outlet property="workoutNameTextField" destination="fv4-lf-EvM" id="SC4-d2-1Ld"/>
                     </connections>
@@ -1333,7 +1330,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RSU-Uc-tXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4021" y="-350"/>
+            <point key="canvasLocation" x="4027" y="-90.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8jM-LU-V5f">
@@ -1351,30 +1348,30 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cZH-t8-MZ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4021" y="1281"/>
+            <point key="canvasLocation" x="4033" y="1609"/>
         </scene>
         <!--Attach Exercises to Workout-->
         <scene sceneID="OW7-Tc-Ym1">
             <objects>
                 <tableViewController id="gSd-lf-UcO" customClass="AttachExerciseTableViewController" customModule="SpartanLog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MP1-2p-YJq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="438"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="aQk-Ef-wyg">
-                            <rect key="frame" x="0.0" y="136" width="600" height="20"/>
+                            <rect key="frame" x="0.0" y="116" width="560" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AttachExerciseTableViewCell" textLabel="JzA-0G-J20" style="IBUITableViewCellStyleDefault" id="LoA-W7-NiO" customClass="AttachExerciseTableViewCell" customModule="SpartanLog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="560" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LoA-W7-NiO" id="pgr-4r-LDA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="560" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JzA-0G-J20">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="530" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1393,11 +1390,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Attach Exercises to Workout" id="wxr-tZ-HK0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tv0-ua-6Q9">
-                            <connections>
-                                <action selector="cancel:" destination="gSd-lf-UcO" id="9QH-wh-moP"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="yI7-Km-htp">
                             <connections>
                                 <action selector="submitAttachAndDetachExercises:" destination="gSd-lf-UcO" id="cf3-lr-PIj"/>
@@ -1410,12 +1402,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPB-tb-W6n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4021" y="2125"/>
+            <point key="canvasLocation" x="4033" y="2206"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="MsD-L0-3Kx"/>
         <segue reference="KX5-KZ-NWn"/>
+        <segue reference="MsD-L0-3Kx"/>
         <segue reference="97a-RI-qO5"/>
         <segue reference="Zcw-eH-qaV"/>
     </inferredMetricsTieBreakers>

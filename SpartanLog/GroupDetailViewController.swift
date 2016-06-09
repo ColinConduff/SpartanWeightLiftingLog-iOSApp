@@ -14,6 +14,7 @@ class GroupDetailViewController: UIViewController, UITextFieldDelegate, UINaviga
     
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var AttachWorkoutsContainerView: UIView!
     
     /*
      This value is either passed by `groupTableViewController` in `prepareForSegue(_:sender:)`
@@ -25,12 +26,16 @@ class GroupDetailViewController: UIViewController, UITextFieldDelegate, UINaviga
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        AttachWorkoutsContainerView.hidden = true
+        
         // Handle the text field’s user input through delegate callbacks.
         groupNameTextField.delegate = self
         
         // Set up views if editing an existing group.
         if let group = group {
             updating = true
+            AttachWorkoutsContainerView.hidden = false
+            
             navigationItem.title = group.name
             groupNameTextField.text   = group.name
         }
@@ -65,7 +70,7 @@ class GroupDetailViewController: UIViewController, UITextFieldDelegate, UINaviga
     
     // MARK: Navigation
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    @IBAction func back(sender: UIBarButtonItem) {
         
         if !updating {
             dismissViewControllerAnimated(true, completion: nil)

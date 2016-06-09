@@ -94,14 +94,9 @@ class AttachWorkoutTableViewController: UITableViewController {
     
     // MARK: Navigation
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func submitAttachAndDetachWorkouts(sender: UIBarButtonItem) {
         attachWorkouts()
         detachWorkouts()
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK:  CRUD Operations
@@ -110,22 +105,22 @@ class AttachWorkoutTableViewController: UITableViewController {
         self.startActivityIndicator()
         
         SpartanAPI.sharedInstance().getWorkouts() { (workouts, error) in
-            
-            if let workouts = workouts {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                if let workouts = workouts {
+                    
                     self.workouts = workouts
                     
                     if self.group?.workouts != nil {
                         self.buildCheckedWorkoutsDictionary()
                         self.tableView.reloadData()
                     }
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -133,23 +128,23 @@ class AttachWorkoutTableViewController: UITableViewController {
         self.startActivityIndicator()
         
         SpartanAPI.sharedInstance().getGroup(group) { (group, error) in
-            
-            if let group = group {
-                performUIUpdatesOnMain {
-                    
+            performUIUpdatesOnMain {
+                
+                if let group = group {
+                        
                     self.group = group
                     
                     if !self.workouts.isEmpty {
                         self.buildCheckedWorkoutsDictionary()
                         self.tableView.reloadData()
                     }
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     

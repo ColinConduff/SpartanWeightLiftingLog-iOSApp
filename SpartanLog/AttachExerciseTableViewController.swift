@@ -94,14 +94,9 @@ class AttachExerciseTableViewController: UITableViewController {
     
     // MARK: Navigation
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func submitAttachAndDetachExercises(sender: UIBarButtonItem) {
         attachExercises()
         detachExercises()
-        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK:  CRUD Operations
@@ -111,21 +106,22 @@ class AttachExerciseTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getExercises() { (exercises, error) in
             
-            if let exercises = exercises {
-                performUIUpdatesOnMain {
+            performUIUpdatesOnMain {
+                
+                if let exercises = exercises {
                     self.exercises = exercises
                     
                     if self.workout?.exercises != nil {
                         self.buildCheckedExercisesDictionary()
                         self.tableView.reloadData()
                     }
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
@@ -134,22 +130,22 @@ class AttachExerciseTableViewController: UITableViewController {
         
         SpartanAPI.sharedInstance().getWorkout(workout) { (workout, error) in
             
-            if let workout = workout {
-                performUIUpdatesOnMain {
-                    
+            performUIUpdatesOnMain {
+                if let workout = workout {
+                        
                     self.workout = workout
                     
                     if !self.exercises.isEmpty {
                         self.buildCheckedExercisesDictionary()
                         self.tableView.reloadData()
                     }
+                    
+                } else {
+                    print(error)
                 }
                 
-            } else {
-                print(error)
+                self.stopActivityIndicator()
             }
-            
-            self.stopActivityIndicator()
         }
     }
     
